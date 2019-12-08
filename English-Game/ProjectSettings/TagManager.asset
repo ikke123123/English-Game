@@ -13,10 +13,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Pushable Object
+  - Grab-able Object
+  - Hand push collider
+  - Hand grab collider
   - 
   - 
   - 
