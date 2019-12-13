@@ -44,5 +44,23 @@ public class OvrAvatarHand : OvrAvatarComponent
 
             Destroy(this);
         }
+
+        //Draws a raycast from the right hand
+        if (isLeftHand != true) {
+            int layerMask = 1 << 8;
+            Vector3 handPointing = transform.TransformDirection(Vector3.forward);
+            RaycastHit hit;
+
+            if (Physics.Raycast(transform.position, handPointing, out hit, Mathf.Infinity, layerMask))
+            {
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
+                hit.collider.gameObject.GetComponent<ChangeColor>().isHit();
+            }
+            else
+            {
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+                //hit.collider.gameObject.GetComponent<ChangeColor>().isNotHit();
+            }
+        }
     }
 }
