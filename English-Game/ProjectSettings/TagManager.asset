@@ -4,9 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - GrabbableObject
   - TriggerBox
   - Hand
+=======
+  - Hand
+  - Data Object
+  - Timer
+>>>>>>> af6a5db4402937cfb3017418d3f497846136f378
   layers:
   - Default
   - TransparentFX
@@ -16,10 +22,17 @@ TagManager:
   - UI
   - 
   - 
+<<<<<<< HEAD
   - Plane
   - 
   - 
   - 
+=======
+  - Pushable Object
+  - Grab-able Object
+  - Hand push collider
+  - Hand grab collider
+>>>>>>> af6a5db4402937cfb3017418d3f497846136f378
   - 
   - 
   - 
