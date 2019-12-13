@@ -25,7 +25,7 @@ namespace OVRTouchSample
 
         public const float INPUT_RATE_CHANGE = 20.0f;
 
-        public const float COLLIDER_SCALE_MIN = 0.01f;
+        public const float COLLIDER_SCALE_MIN = 1.0f;
         public const float COLLIDER_SCALE_MAX = 1.0f;
         public const float COLLIDER_SCALE_PER_SECOND = 1.0f;
 
@@ -227,7 +227,7 @@ namespace OVRTouchSample
                 for (int i = 0; i < m_colliders.Length; ++i)
                 {
                     Collider collider = m_colliders[i];
-                    collider.enabled = false;
+                    collider.enabled = true;
                     collider.transform.localScale = new Vector3(COLLIDER_SCALE_MIN, COLLIDER_SCALE_MIN, COLLIDER_SCALE_MIN);
                 }
             }
