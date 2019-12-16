@@ -2727,7 +2727,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4574081049994322428}
   - component: {fileID: 4574081049983144900}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: GrabVolumeSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

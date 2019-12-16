@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SoundcardPlayer : MonoBehaviour
 {
+    //------------------------------------------
+    //             Made By Thomas
+    //------------------------------------------
+
     [HideInInspector] private List<Soundcard> playingAudioSources = new List<Soundcard>();
     [HideInInspector] private List<Soundcard> rampOnAudioSources = new List<Soundcard>();
     [HideInInspector] private List<Soundcard> rampOffAudioSources = new List<Soundcard>();
@@ -16,18 +20,20 @@ public class SoundcardPlayer : MonoBehaviour
         PlayingFixedUpdate();
     }
 
+    private void OnDestroy()
+    {
+        foreach (Soundcard soundcard in CombineSoundcardLists(playingAudioSources, rampOffAudioSources, rampOnAudioSources))
+        {
+            DestroyAudioSource(soundcard);
+        }
+    }
 
     //Public
-    public void StopPlaying(Soundcard soundcard, bool skipRampOff = false)
+    public void StopPlaying(Soundcard soundcard)
     {
         playingAudioSources.Remove(soundcard);
-        if (skipRampOff == false)
-        {
-            soundcard.state = Soundcard.State.rampOff;
-            rampOffAudioSources.Add(soundcard);
-            return;
-        }
-        DestroyAudioSource(soundcard);
+        soundcard.state = Soundcard.State.rampOff;
+        rampOffAudioSources.Add(soundcard);
     }
 
     public void StartPlaying(Soundcard soundcard)
@@ -37,9 +43,17 @@ public class SoundcardPlayer : MonoBehaviour
 
     public void StopAllSound(bool skipRampOff)
     {
+        if (skipRampOff)
+        {
+            foreach (Soundcard soundcard in CombineSoundcardLists(playingAudioSources, rampOffAudioSources, rampOnAudioSources))
+            {
+                DestroyAudioSource(soundcard);
+            }
+            return;
+        }
         foreach (Soundcard soundcard in CombineSoundcardLists(playingAudioSources, rampOffAudioSources, rampOnAudioSources))
         {
-            StopPlaying(soundcard, skipRampOff);
+            StopPlaying(soundcard);
         }
     }
 
@@ -64,7 +78,7 @@ public class SoundcardPlayer : MonoBehaviour
         RemoveFromList(soundcard);
         soundcard.paused = true;
         pausedAudioSources.Add(soundcard);
-        soundcard.audioSource.Stop();
+        soundcard.audioSource.Pause();
     }
 
     public void Unpause(Soundcard soundcard)
@@ -72,20 +86,22 @@ public class SoundcardPlayer : MonoBehaviour
         AddToList(soundcard);
         soundcard.paused = false;
         pausedAudioSources.Add(soundcard);
-        soundcard.audioSource.Play();
+        soundcard.audioSource.UnPause();
     }
 
 
     //Private
     private void CreateAudioSource(Soundcard soundcard)
     {
-        if (soundcard.state == Soundcard.State.off)
+        if (soundcard.state == Soundcard.State.off && soundcard.volume != 0)
         {
-            soundcard.audioSource = gameObject.AddComponent<AudioSource>();
-            soundcard.audioSource.clip = soundcard.clip;
-            soundcard.audioSource.volume = 0;
-            soundcard.audioSource.spatialBlend = 1;
-            soundcard.audioSource.Play();
+            AudioSource audio = gameObject.AddComponent<AudioSource>();
+            audio.clip = soundcard.clip;
+            audio.loop = soundcard.loop;
+            audio.volume = 0;
+            audio.spatialBlend = 1;
+            audio.Play();
+            soundcard.audioSource = audio;
             soundcard.state = Soundcard.State.rampOn;
             rampOnAudioSources.Add(soundcard);
         }
@@ -93,9 +109,9 @@ public class SoundcardPlayer : MonoBehaviour
 
     private bool DestroyAudioSource(Soundcard soundcard)
     {
+        soundcard.state = Soundcard.State.off;
         if (soundcard.audioSource != null)
         {
-            soundcard.state = Soundcard.State.off;
             Destroy(soundcard.audioSource);
             return true;
         }

@@ -1,5 +1,4 @@
-﻿
-//List of objects
+﻿//List of objects
 public enum BoxType
 {
     OrangeBox,

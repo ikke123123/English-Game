@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ObjectReset : MonoBehaviour
 {
+    //------------------------------------------
+    //             Made By Thomas
+    //------------------------------------------
+
     [SerializeField] private float minHeight;
     [HideInInspector] private Vector3 startPos;
     [HideInInspector] private Quaternion startRotation;

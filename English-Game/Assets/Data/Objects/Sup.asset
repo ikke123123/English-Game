@@ -9,14 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50627668c347f1647b2cc3dbe998bad0, type: 3}
-  m_Name: Planet Telex
+  m_Script: {fileID: 11500000, guid: b7bd35b44b320a645ba6877a32ba3c35, type: 3}
+  m_Name: Sup
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 382c840a917c69a4c956ea62096cae5a, type: 3}
-  volume: 1
-  rampOffStep: -1
-  rampOnStep: 1
-  loop: 0
-  audioSource: {fileID: 0}
-  state: 0
-  paused: 0
+  prefab: {fileID: 0}
+  assignedGameObject: []

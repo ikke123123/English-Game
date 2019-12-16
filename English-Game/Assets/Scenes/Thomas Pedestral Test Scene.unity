@@ -303,19 +303,7 @@ MonoBehaviour:
     goalDescription: Just press the play button.
     toDoWhenStarted:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 119785607}
-          m_MethodName: StartPlaying
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 11400000, guid: cb1d441c8baf0cd4e999d54beb7fafb4,
-              type: 2}
-            m_ObjectArgumentAssemblyTypeName: Soundcard, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     toDoWhenCompleted:
@@ -328,19 +316,7 @@ MonoBehaviour:
     goalDescription: Press the button
     toDoWhenStarted:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 119785607}
-          m_MethodName: Pause
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 11400000, guid: cb1d441c8baf0cd4e999d54beb7fafb4,
-              type: 2}
-            m_ObjectArgumentAssemblyTypeName: Soundcard, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     toDoWhenCompleted:
@@ -381,6 +357,8 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
   noSave: 1
+  playerName: 
+  currentMilestoneID: 0
   currentMilestone:
     milestoneName: 
     goalDescription: 
@@ -935,6 +913,21 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4574081048524786765, guid: ced1025d23bf13042a28dd878ac85403,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4574081049994587504, guid: ced1025d23bf13042a28dd878ac85403,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4574081048524685757, guid: ced1025d23bf13042a28dd878ac85403,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ced1025d23bf13042a28dd878ac85403, type: 3}
 --- !u!1 &1716598078
@@ -1039,6 +1032,8 @@ GameObject:
   - component: {fileID: 2013826022}
   - component: {fileID: 2013826021}
   - component: {fileID: 2013826020}
+  - component: {fileID: 2013826024}
+  - component: {fileID: 2013826023}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -1105,6 +1100,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2013826023
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013826019}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &2013826024
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013826019}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 1.02, z: 0}
 --- !u!1 &2071360494
 GameObject:
   m_ObjectHideFlags: 0

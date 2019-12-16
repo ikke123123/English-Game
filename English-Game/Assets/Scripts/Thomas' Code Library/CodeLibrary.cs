@@ -5,6 +5,10 @@ using UnityEngine.Events;
 
 public class CodeLibrary : MonoBehaviour
 {
+    //------------------------------------------
+    //             Made By Thomas
+    //------------------------------------------
+
     public static void ResizeBoxColliderToMeshFilter(BoxCollider collider, MeshFilter mesh)
     {
         collider.size = mesh.mesh.bounds.size;
@@ -122,5 +126,14 @@ public class CodeLibrary : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public static bool BetweenTwoValues(float input, float min, float max)
+    {
+        if (input < min && input > max)
+        {
+            return false;
+        }
+        return true;
     }
 }

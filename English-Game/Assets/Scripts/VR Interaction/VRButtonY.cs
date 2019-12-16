@@ -5,6 +5,10 @@ using UnityEngine.Events;
 
 public class VRButtonY : MonoBehaviour
 {
+    //------------------------------------------
+    //             Made By Thomas
+    //------------------------------------------
+
     [SerializeField] private UnityEvent whenButtonIsPressed;
 
     [Header("Variables")]

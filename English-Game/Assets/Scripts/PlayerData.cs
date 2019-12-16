@@ -6,6 +6,10 @@ using UnityEngine.Events;
 
 public class PlayerData : MonoBehaviour
 {
+    //------------------------------------------
+    //             Made By Thomas
+    //------------------------------------------
+
     [Header("Milestone Data")]
     [SerializeField] private Milestones[] milestones;
     [SerializeField] private Finish end;
@@ -13,8 +17,8 @@ public class PlayerData : MonoBehaviour
     [Header("Playerdata")]
     [SerializeField] private bool noSave;
 
-    [HideInInspector] private string playerName;
-    [HideInInspector] private int currentMilestoneID;
+    [SerializeField] private string playerName;
+    [SerializeField] private int currentMilestoneID;
     [HideInInspector] public Milestones currentMilestone;
 
     private void Awake()
