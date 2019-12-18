@@ -9,6 +9,11 @@ public class PlayerData : MonoBehaviour
     //------------------------------------------
     //             Made By Thomas
     //------------------------------------------
+    //This script maintains a system of milesto-
+    //nes by which the game will know where the
+    //player is, what he/she has to do, and this
+    //script can save those things for later 
+    //use.
 
     [Header("Milestone Data")]
     [SerializeField] private Milestones[] milestones;
@@ -113,10 +118,4 @@ public class Milestones
 public class Finish
 {
     [SerializeField] public UnityEvent toDoWhenStarted;
-}
-
-[System.Serializable]
-public class Transfer
-{
-
 }

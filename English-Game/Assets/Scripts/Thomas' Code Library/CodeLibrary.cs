@@ -8,6 +8,7 @@ public class CodeLibrary : MonoBehaviour
     //------------------------------------------
     //             Made By Thomas
     //------------------------------------------
+    //All kinds of useful, and less useful code things
 
     public static void ResizeBoxColliderToMeshFilter(BoxCollider collider, MeshFilter mesh)
     {
@@ -135,5 +136,15 @@ public class CodeLibrary : MonoBehaviour
             return false;
         }
         return true;
+    }
+
+    public static bool ContainsObject(object[] input, object checkFor)
+    {
+        if (input.GetType() != checkFor.GetType()) return false;
+        for (int i = 0; i < input.Length; i++)
+        {
+            if (input[i] == checkFor) return true;
+        }
+        return false;
     }
 }

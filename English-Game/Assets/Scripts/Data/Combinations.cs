@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Combinations : MonoBehaviour
+public class Combinations : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //------------------------------------------
+    //             Made By Thomas
+    //------------------------------------------
+    //This script contains the possible combina-
+    //tions that you can do with other objects.
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] public ObjectCard[] combinesWith;
+    [SerializeField] public ObjectCard result;
 }

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7bd35b44b320a645ba6877a32ba3c35, type: 3}
+  m_Name: Blue Image 7
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7215047670620186566, guid: 82c4b85e9270006469df513b0080ab1b, type: 3}
+  combinations: []
+  pictureTag:
+    location: 1
+    activity: 2
+    attribute: 3
+  assignedGameObject: []

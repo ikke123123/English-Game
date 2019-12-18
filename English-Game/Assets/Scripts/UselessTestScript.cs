@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class UselessTestScript : MonoBehaviour
 {
-    public enum Numbers { Bruh1, Bruh2, Bruh3, Bruh4, Bruh5, Bruh6};
+    //------------------------------------------
+    //             Made By Thomas
+    //------------------------------------------
 
-    public void Bruh(int numberIdentifier)
+    public void Bruh(ObjectCard[] input)
     {
-        Debug.Log((Numbers)numberIdentifier);
+        gameObject.GetComponent<MeshRenderer>().sharedMaterial = input[0].prefab.GetComponent<MeshRenderer>().sharedMaterial;
     }
 }

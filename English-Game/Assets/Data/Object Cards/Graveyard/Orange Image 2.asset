@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7bd35b44b320a645ba6877a32ba3c35, type: 3}
+  m_Name: Orange Image 2
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2082654627182207669, guid: fcd85ba69ce579c498a44aad1f0b3f81, type: 3}
+  combinations: []
+  pictureTag:
+    location: 0
+    activity: 0
+    attribute: 0
+  assignedGameObject: []
