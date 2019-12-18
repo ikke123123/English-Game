@@ -5,17 +5,21 @@ using UnityEngine;
 public class AncorChange : MonoBehaviour
 {
     Vector3 currentPos;
-
+    private Transform playerChild;
+    private Vector3 playerPos;
+    public Vector3 difference;
     // Start is called before the first frame update
     void Start()
     {
-
+        playerChild = this.gameObject.transform.GetChild(0);
+        playerPos = playerChild.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        difference.x = currentPos.x - playerPos.x;
+        difference.z = currentPos.z - playerPos.z;
     }
 
     //Ancor pos once it changes + 1 for the hight
