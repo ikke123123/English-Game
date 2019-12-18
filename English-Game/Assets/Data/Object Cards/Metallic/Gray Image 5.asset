@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Gray Image 5
   m_EditorClassIdentifier: 
   prefab: {fileID: 4734201812102239578, guid: 95d5c7483422b084d9959ffa769b902c, type: 3}
+  location: 2
+  attribute: 6
+  activity: 8
   combinations: []
-  pictureTag:
-    location: 2
-    activity: 3
-    attribute: 2
   assignedGameObject: []

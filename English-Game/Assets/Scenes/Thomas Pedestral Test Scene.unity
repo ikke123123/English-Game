@@ -3419,33 +3419,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 2013826019}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fa6744dbf569314c8a35c2f2245eac2, type: 3}
+  m_Script: {fileID: 11500000, guid: 198fe769542239749a59c55d9c71243b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardAnswer: 0
+  pictureSound:
+    blue: {fileID: 0}
+    gray: {fileID: 0}
+    green: {fileID: 0}
+    standard: {fileID: 0}
+    lighter: {fileID: 0}
+    darker: {fileID: 0}
+    normal: {fileID: 0}
+    metallic: {fileID: 0}
+    transparent: {fileID: 0}
   textDisplay: {fileID: 786724707}
   soundcardPlayer: {fileID: 119785607}
-  activitySounds:
-  - soundcard: {fileID: 0}
-    tag: 0
-  - soundcard: {fileID: 0}
-    tag: 0
-  - soundcard: {fileID: 0}
-    tag: 0
-  attributeSounds:
-  - soundcard: {fileID: 0}
-    tag: 0
-  - soundcard: {fileID: 0}
-    tag: 0
-  - soundcard: {fileID: 0}
-    tag: 0
-  locationSounds:
-  - soundcard: {fileID: 0}
-    tag: 0
-  - soundcard: {fileID: 0}
-    tag: 0
-  - soundcard: {fileID: 0}
-    tag: 0
   toDoAfterComplete:
     m_PersistentCalls:
       m_Calls:
@@ -3463,6 +3451,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  cardAnswer: 1
+  disablePuzzle: 0
 --- !u!1001 &2013840600
 PrefabInstance:
   m_ObjectHideFlags: 0

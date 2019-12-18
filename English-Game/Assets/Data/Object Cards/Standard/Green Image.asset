@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Green Image
   m_EditorClassIdentifier: 
   prefab: {fileID: 4005854272384485898, guid: 55e7b20ed6409ea44bb525c1391c7274, type: 3}
+  location: 3
+  attribute: 4
+  activity: 7
   combinations: []
-  pictureTag:
-    location: 3
-    activity: 1
-    attribute: 1
   assignedGameObject: []

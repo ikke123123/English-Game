@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Blue Image 6
   m_EditorClassIdentifier: 
   prefab: {fileID: 7215047670620186566, guid: 2872681406614d84d908a67df31219e0, type: 3}
+  location: 1
+  attribute: 4
+  activity: 9
   combinations: []
-  pictureTag:
-    location: 1
-    activity: 1
-    attribute: 3
   assignedGameObject: []
