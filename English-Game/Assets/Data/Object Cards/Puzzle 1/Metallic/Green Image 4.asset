@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7bd35b44b320a645ba6877a32ba3c35, type: 3}
+  m_Name: Green Image 4
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4005854272384485898, guid: cf610186e4263e941ae8d659ed799be4, type: 3}
+  location: 3
+  attribute: 5
+  activity: 8
+  combinations: []
+  assignedGameObject: []
