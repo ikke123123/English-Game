@@ -17,8 +17,9 @@ public class ReadObjectCard : MonoBehaviour
     [Header("Data")]
     [SerializeField, Tooltip("Can be left empty")] private ObjectCardAction[] cardAction;
 
-    [Header("Puzzle Objects")]
+    [Header("Puzzle One")]
     [SerializeField, Tooltip("Can be left empty")] private GameObject combinationObject = null;
+    [Header("Puzzle Two")]
     [SerializeField, Tooltip("Can be left empty")] private PuzzleOneScript puzzleOneObject = null;
 
     [HideInInspector] private List<ObjectCard> objectCards = new List<ObjectCard>();

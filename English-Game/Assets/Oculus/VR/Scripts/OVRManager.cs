@@ -883,10 +883,10 @@ public class OVRManager : MonoBehaviour
 	/// be used. A colorScale of (1, 1, 1, 1) and colorOffset of (0, 0, 0, 0) will lead to an identity multiplication
 	/// and have no effect.
 	/// </summary>
-	//public static void SetColorScaleAndOffset(Vector4 colorScale, Vector4 colorOffset, bool applyToAllLayers)
-	//{
-	//	OVRPlugin.SetColorScaleAndOffset(colorScale, colorOffset, applyToAllLayers);
-	//}
+	public static void SetColorScaleAndOffset(Vector4 colorScale, Vector4 colorOffset, bool applyToAllLayers)
+	{
+		OVRPlugin.SetColorScaleAndOffset(colorScale, colorOffset, applyToAllLayers);
+	}
 
 	/// <summary>
 	/// Specifies OpenVR pose local to tracking space
@@ -1453,9 +1453,9 @@ public class OVRManager : MonoBehaviour
 
 		if (useRecommendedMSAALevel && QualitySettings.antiAliasing != display.recommendedMSAALevel)
 		{
-			//Debug.Log("The current MSAA level is " + QualitySettings.antiAliasing +
-			//", but the recommended MSAA level is " + display.recommendedMSAALevel +
-			//". Switching to the recommended level.");
+			Debug.Log("The current MSAA level is " + QualitySettings.antiAliasing +
+			", but the recommended MSAA level is " + display.recommendedMSAALevel +
+			". Switching to the recommended level.");
 
 			QualitySettings.antiAliasing = display.recommendedMSAALevel;
 		}

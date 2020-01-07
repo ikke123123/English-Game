@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Assets.OVR.Scripts
 {
@@ -55,8 +56,18 @@ namespace Assets.OVR.Scripts
 		public string[] buttonNames;
 		public bool editModeRequired;
 		public bool complete;
+        private FixMethodDelegate method;
+        private UnityEngine.Object target;
+        private string[] buttons;
 
-		public FixRecord(string cat, string msg, FixMethodDelegate fix, UnityEngine.Object target, bool editRequired, string[] buttons)
+        public FixRecord(string cat, string msg, FixMethodDelegate method, UnityEngine.Object target, string[] buttons) : base(cat, msg)
+        {
+            this.method = method;
+            this.target = target;
+            this.buttons = buttons;
+        }
+
+        public FixRecord(string cat, string msg, FixMethodDelegate fix, UnityEngine.Object target, bool editRequired, string[] buttons)
 			: base(cat, msg)
 		{
 			buttonNames = buttons;
