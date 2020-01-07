@@ -10,20 +10,23 @@ public class ReadObjectCard : MonoBehaviour
     //------------------------------------------
     //Script maintains a list of objectcards that
     //are currently within the bounds of the
-    //trigger.
+    //trigger. And sends the Object Cards around
+    //when a card enters its bounds.
     //------------------------------------------
-    //Last Modification Time: 15:14 07/01/2020
+    //Last Modification Time: 21:14 07/01/2020
+
+    [HideInInspector] private enum CombinationComponent { unselected, read, write };
 
     [Header("Data")]
-    [SerializeField, Tooltip("Can be left empty")] private ObjectCardAction[] cardAction;
-
-    [Header("Puzzle One")]
-    [SerializeField, Tooltip("Can be left empty")] private GameObject combinationObject = null;
+    [SerializeField, Tooltip("Action that will be taken upon a certain card entering/leaving. Can be left empty")] private ObjectCardAction[] cardAction;
+    [Header("Push to Function")]
+    [SerializeField, Tooltip("Pushes an Object card to a certain object. Can be left empty.")] private UnityEvent pushCard = null;
     [Header("Puzzle Two")]
-    [SerializeField, Tooltip("Can be left empty")] private PuzzleOneScript puzzleOneObject = null;
+    [SerializeField, Tooltip("Select purpose of object data reader. Can be left at unselected if not used.")] private CombinationComponent combinationComponent;
+    [SerializeField, Tooltip("Script that decides what needs to happen with the object cards that are pushed, made for puzzle 2. Can be left empty.")] private Combination combinationObject = null;
 
     [HideInInspector] private List<ObjectCard> objectCards = new List<ObjectCard>();
-    [HideInInspector] private List<Combinations> possibleCombinations = new List<Combinations>();
+    [HideInInspector] private List<GameObject> gameObjects = new List<GameObject>();
 
     private void Awake()
     {
@@ -36,67 +39,75 @@ public class ReadObjectCard : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.GetComponent<ObjectCardHolder>().objectCard != null)
+        if (collider.gameObject.GetComponent<ObjectCardHolder>() && collider.gameObject.GetComponent<ObjectCardHolder>().objectCard != null)
         {
             ObjectCard objectCard = collider.gameObject.GetComponent<ObjectCardHolder>().objectCard;
+            gameObjects.Add(collider.gameObject);
             foreach (ObjectCardAction objectCardAction in cardAction) if (objectCardAction.card == objectCard) objectCardAction.onEnter.Invoke();
             objectCards.Add(objectCard);
             PushCard(objectCard);
-            PushCombination();
+            if (combinationComponent == CombinationComponent.read) PushCombination();
+            if (combinationComponent == CombinationComponent.write) PushCardAndObject(objectCard, collider.gameObject);
         }
     }
 
     private void OnTriggerExit(Collider collider)
     {
-        if (collider.gameObject.GetComponent<ObjectCardHolder>().objectCard != null)
+        if (collider.gameObject.GetComponent<ObjectCardHolder>() && collider.gameObject.GetComponent<ObjectCardHolder>().objectCard != null)
         {
             ObjectCard objectCard = collider.gameObject.GetComponent<ObjectCardHolder>().objectCard;
-            foreach (ObjectCardAction objectCardAction in cardAction) if (objectCardAction.card == objectCard) objectCardAction.onEnter.Invoke();
+            gameObjects.Remove(collider.gameObject);
+            foreach (ObjectCardAction objectCardAction in cardAction) if (objectCardAction.card == objectCard) objectCardAction.onLeave.Invoke();
             objectCards.Remove(objectCard);
+            if (combinationComponent == CombinationComponent.read) PushCombination();
+            if (combinationComponent == CombinationComponent.write) PushCardAndObject(objectCard, collider.gameObject);
         }
     }
 
     public void PushCombination()
     {
         if (combinationObject == null) return;
-        if (combinationObject.GetComponent<UselessTestScript>() == null) return;
-        if (CombinationCheck()) combinationObject.GetComponent<UselessTestScript>().Bruh(objectCards.ToArray()); //NEEDS TO BE UPDATED
+        Combinations tempCombinations = new Combinations();
+        if (CombinationCheck(tempCombinations)) combinationObject.CatchPossibleCombinations(gameObjects.ToArray(), tempCombinations);
+    }
+
+    public void PushCardAndObject(ObjectCard card, GameObject gameObject)
+    {
+        if (combinationObject == null) return;
+        combinationObject.CatchEmptyComponent(gameObject, card);
     }
 
     public void PushCard(ObjectCard card)
     {
-        if (puzzleOneObject == null) return;
-        puzzleOneObject.GetComponent<PuzzleOneScript>().PictureGiven(card);
+        if (pushCard == null) return;
+        pushCard.Invoke();
     }
 
-    private bool CombinationCheck()
+    private bool CombinationCheck(Combinations toReturn)
     {
-        if (objectCards.Count == 0) return false;
-        possibleCombinations.Clear();
+        List<ObjectCard> remainingCards = new List<ObjectCard>();
+        List<Combinations> processedCombinations = new List<Combinations>();
         foreach (ObjectCard objectCard in objectCards)
         {
-            if (objectCard.combinations == null) return false;
-            foreach (Combinations combination in objectCard.combinations)
+            foreach (Combinations combinations in objectCard.combinations)
             {
-                if (CheckAllInCombination(combination) == false) return false;
-                possibleCombinations.Add(combination);
+                if (processedCombinations.Contains(combinations) == false && combinations.combinesWith.Length > objectCards.Count)
+                {
+                    remainingCards.Clear();
+                    remainingCards.AddRange(combinations.combinesWith);
+                    foreach (ObjectCard objectCard1 in objectCards)
+                    {
+                        if (remainingCards.Remove(objectCard1) == false) break;
+                    }
+                    if (remainingCards.Count == 0)
+                    {
+                        toReturn = combinations;
+                        return true;
+                    }
+                }
             }
         }
-        return true;
-    }
-
-    private bool CheckAllInCombination(Combinations input)
-    {
-        List<ObjectCard> tempCards = new List<ObjectCard>();
-        tempCards.AddRange(input.combinesWith);
-        foreach (ObjectCard objectCardInCombination in objectCards)
-        {
-            if (!(tempCards.Contains(objectCardInCombination)))
-            {
-                return false;
-            }
-        }
-        return true;
+        return false;
     }
 }
 

@@ -84,7 +84,6 @@ public class SnapScript: MonoBehaviour
             {
                 leftOrRight = LeftOrRight.right;
             }
-
         }
 
         if (other.gameObject.tag == "TriggerBox")
@@ -93,9 +92,8 @@ public class SnapScript: MonoBehaviour
             //Debug.Log(rotationXYZ);
             inBox = true;
         }
-
-
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "TriggerBox")
