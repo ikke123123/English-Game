@@ -1085,8 +1085,6 @@ MeshRenderer:
   m_SortingOrder: 0
 --- !u!33 &2013826021
 MeshFilter:
-<<<<<<< Updated upstream:English-Game/Assets/Scenes/Thomas Pedestral Test Scene.unity
-=======
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1263,7 +1261,6 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 489ad7dca7940444199067bfaf791c99, type: 3}
 --- !u!1001 &2025113578
 PrefabInstance:
->>>>>>> Stashed changes:English-Game/Assets/Scenes/Puzzle 1 Test Scene (Thomas).unity
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}

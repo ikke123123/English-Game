@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class SoundcardPlayer : MonoBehaviour
 {
+    //------------------------------------------
+    //             Made By Thomas
+    //------------------------------------------
+    //This object maintains an audio object, and
+    //let's it play audiocards, much like a juk-
+    //ebox. 
+    //Use this only for bigger objects that need
+    //to play multiple sounds.
+    //------------------------------------------
+    //Last Modification Time: 15:16 07/01/2020
+
     [HideInInspector] private List<Soundcard> playingAudioSources = new List<Soundcard>();
     [HideInInspector] private List<Soundcard> rampOnAudioSources = new List<Soundcard>();
     [HideInInspector] private List<Soundcard> rampOffAudioSources = new List<Soundcard>();
@@ -16,30 +27,56 @@ public class SoundcardPlayer : MonoBehaviour
         PlayingFixedUpdate();
     }
 
+    private void OnDestroy()
+    {
+        foreach (Soundcard soundcard in CombineSoundcardLists(playingAudioSources, rampOffAudioSources, rampOnAudioSources))
+        {
+            DestroyAudioSource(soundcard);
+        }
+    }
 
     //Public
-    public void StopPlaying(Soundcard soundcard, bool skipRampOff = false)
+    public void StopPlaying(Soundcard soundcard)
     {
         playingAudioSources.Remove(soundcard);
-        if (skipRampOff == false)
-        {
-            soundcard.state = Soundcard.State.rampOff;
-            rampOffAudioSources.Add(soundcard);
-            return;
-        }
-        DestroyAudioSource(soundcard);
+        soundcard.state = State.rampOff;
+        rampOffAudioSources.Add(soundcard);
     }
 
     public void StartPlaying(Soundcard soundcard)
     {
-        CreateAudioSource(soundcard);
+        if (soundcard.state == State.off && soundcard.volume != 0)
+        {
+            if (SoundCategory.CategoryStateOff(soundcard))
+            {
+                AudioSource audio = gameObject.AddComponent<AudioSource>();
+                audio.clip = soundcard.clip;
+                audio.loop = soundcard.loop;
+                audio.volume = 0;
+                audio.spatialBlend = 1;
+                audio.Play();
+                soundcard.audioSource = audio;
+                soundcard.state = State.rampOn;
+                rampOnAudioSources.Add(soundcard);
+                SoundCategory.SetCategoryStateOn(soundcard);
+            }
+            Debug.Log("Couldn't start playing sound because of Catagory State being turned On.");
+        }
     }
 
     public void StopAllSound(bool skipRampOff)
     {
+        if (skipRampOff)
+        {
+            foreach (Soundcard soundcard in CombineSoundcardLists(playingAudioSources, rampOffAudioSources, rampOnAudioSources))
+            {
+                DestroyAudioSource(soundcard);
+            }
+            return;
+        }
         foreach (Soundcard soundcard in CombineSoundcardLists(playingAudioSources, rampOffAudioSources, rampOnAudioSources))
         {
-            StopPlaying(soundcard, skipRampOff);
+            StopPlaying(soundcard);
         }
     }
 
@@ -64,7 +101,7 @@ public class SoundcardPlayer : MonoBehaviour
         RemoveFromList(soundcard);
         soundcard.paused = true;
         pausedAudioSources.Add(soundcard);
-        soundcard.audioSource.Stop();
+        soundcard.audioSource.Pause();
     }
 
     public void Unpause(Soundcard soundcard)
@@ -72,30 +109,17 @@ public class SoundcardPlayer : MonoBehaviour
         AddToList(soundcard);
         soundcard.paused = false;
         pausedAudioSources.Add(soundcard);
-        soundcard.audioSource.Play();
+        soundcard.audioSource.UnPause();
     }
 
 
     //Private
-    private void CreateAudioSource(Soundcard soundcard)
-    {
-        if (soundcard.state == Soundcard.State.off)
-        {
-            soundcard.audioSource = gameObject.AddComponent<AudioSource>();
-            soundcard.audioSource.clip = soundcard.clip;
-            soundcard.audioSource.volume = 0;
-            soundcard.audioSource.spatialBlend = 1;
-            soundcard.audioSource.Play();
-            soundcard.state = Soundcard.State.rampOn;
-            rampOnAudioSources.Add(soundcard);
-        }
-    }
-
     private bool DestroyAudioSource(Soundcard soundcard)
     {
+        soundcard.state = State.off;
+        SoundCategory.SetCategoryStateOff(soundcard);
         if (soundcard.audioSource != null)
         {
-            soundcard.state = Soundcard.State.off;
             Destroy(soundcard.audioSource);
             return true;
         }
@@ -106,13 +130,13 @@ public class SoundcardPlayer : MonoBehaviour
     {
         switch (soundcard.state)
         {
-            case Soundcard.State.playing:
+            case State.playing:
                 playingAudioSources.Remove(soundcard);
                 break;
-            case Soundcard.State.rampOn:
+            case State.rampOn:
                 rampOnAudioSources.Remove(soundcard);
                 break;
-            case Soundcard.State.rampOff:
+            case State.rampOff:
                 rampOffAudioSources.Remove(soundcard);
                 break;
         }
@@ -122,13 +146,13 @@ public class SoundcardPlayer : MonoBehaviour
     {
         switch (soundcard.state)
         {
-            case Soundcard.State.playing:
+            case State.playing:
                 playingAudioSources.Add(soundcard);
                 break;
-            case Soundcard.State.rampOn:
+            case State.rampOn:
                 rampOnAudioSources.Add(soundcard);
                 break;
-            case Soundcard.State.rampOff:
+            case State.rampOff:
                 rampOffAudioSources.Add(soundcard);
                 break;
         }
@@ -143,7 +167,7 @@ public class SoundcardPlayer : MonoBehaviour
             if (soundcard.rampOnStep > soundcard.volume || soundcard.audioSource.volume + soundcard.rampOnStep > soundcard.volume)
             {
                 soundcard.audioSource.volume = soundcard.volume;
-                soundcard.state = Soundcard.State.playing;
+                soundcard.state = State.playing;
                 toRemove.Add(soundcard);
                 playingAudioSources.Add(soundcard);
             } else soundcard.audioSource.volume += soundcard.rampOnStep;

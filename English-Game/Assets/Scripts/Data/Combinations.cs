@@ -7,9 +7,9 @@ public class Combinations : ScriptableObject
     //------------------------------------------
     //             Made By Thomas
     //------------------------------------------
-    //This script contains data about objects t-
-    //hat are assigned to it.
+    //This script contains the possible combina-
+    //tions that you can do with other objects.
 
-    [SerializeField] public ObjectCard[] objectsForCombination;
-    [SerializeField] public ObjectCard creates;
+    [SerializeField] public ObjectCard[] combinesWith;
+    [SerializeField] public ObjectCard result;
 }

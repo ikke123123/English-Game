@@ -13,6 +13,7 @@ public class ObjectReset : MonoBehaviour
     //Use this script on objects that are missi-
     //on critical, and need to be respawned when
     //they get lost.
+    //Last Modification Time: 15:13 07/01/2020
 
     [Header("Settings")]
     [SerializeField, Tooltip("Object should respawn whenever it gets below the Minimal Height.")] private bool respawnUpdate = false;
@@ -33,15 +34,18 @@ public class ObjectReset : MonoBehaviour
         if (rb == null) Debug.LogError("Disabled respawning: " + gameObject.name); disable = true;
         if (startPos.y < minHeight && respawnUpdate)
         {
-            Debug.LogWarning("Will forever respawn: " + gameObject.name); 
+            Debug.LogWarning("Will forever respawn: " + gameObject.name);
             disable = true;
         }
-  
+
         startRotation = transform.rotation;
-        rb = GetComponent<Rigidbody>();
-        if (rb == null)
+        if (GetComponent<Rigidbody>())
         {
-            Debug.LogWarning("Disabled respawning: " + gameObject.name); 
+            rb = GetComponent<Rigidbody>();
+        }
+        else
+        {
+            Debug.LogWarning("Disabled respawning: " + gameObject.name);
             disable = true;
         }
     }

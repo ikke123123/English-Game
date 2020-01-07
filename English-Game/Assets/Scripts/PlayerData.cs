@@ -6,6 +6,17 @@ using UnityEngine.Events;
 
 public class PlayerData : MonoBehaviour
 {
+    //------------------------------------------
+    //             Made By Thomas
+    //------------------------------------------
+    //This script maintains a system of milesto-
+    //nes by which the game will know where the
+    //player is, what he/she has to do, and this
+    //script can save those things for later 
+    //use.
+    //------------------------------------------
+    //Last Modification Time: 15:14 07/01/2020
+
     [Header("Milestone Data")]
     [SerializeField] private Milestones[] milestones;
     [SerializeField] private Finish end;
@@ -13,8 +24,8 @@ public class PlayerData : MonoBehaviour
     [Header("Playerdata")]
     [SerializeField] private bool noSave;
 
-    [HideInInspector] private string playerName;
-    [HideInInspector] private int currentMilestoneID;
+    [SerializeField] private string playerName;
+    [SerializeField] private int currentMilestoneID;
     [HideInInspector] public Milestones currentMilestone;
 
     private void Awake()
@@ -109,10 +120,4 @@ public class Milestones
 public class Finish
 {
     [SerializeField] public UnityEvent toDoWhenStarted;
-}
-
-[System.Serializable]
-public class Transfer
-{
-
 }

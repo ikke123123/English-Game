@@ -11,6 +11,8 @@ public class ReadObjectCard : MonoBehaviour
     //Script maintains a list of objectcards that
     //are currently within the bounds of the
     //trigger.
+    //------------------------------------------
+    //Last Modification Time: 15:14 07/01/2020
 
     [Header("Data")]
     [SerializeField, Tooltip("Can be left empty")] private ObjectCardAction[] cardAction;

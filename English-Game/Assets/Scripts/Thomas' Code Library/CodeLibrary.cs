@@ -5,6 +5,13 @@ using UnityEngine.Events;
 
 public class CodeLibrary : MonoBehaviour
 {
+    //------------------------------------------
+    //             Made By Thomas
+    //------------------------------------------
+    //All kinds of useful, and less useful code things
+    //------------------------------------------
+    //Last Modification Time: 15:15 07/01/2020
+
     public static void ResizeBoxColliderToMeshFilter(BoxCollider collider, MeshFilter mesh)
     {
         collider.size = mesh.mesh.bounds.size;
@@ -120,6 +127,25 @@ public class CodeLibrary : MonoBehaviour
         if (input1.GetType() == input2.GetType())
         {
             return true;
+        }
+        return false;
+    }
+
+    public static bool BetweenTwoValues(float input, float min, float max)
+    {
+        if (input < min && input > max)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public static bool ContainsObject(object[] input, object checkFor)
+    {
+        if (input.GetType() != checkFor.GetType()) return false;
+        for (int i = 0; i < input.Length; i++)
+        {
+            if (input[i] == checkFor) return true;
         }
         return false;
     }
