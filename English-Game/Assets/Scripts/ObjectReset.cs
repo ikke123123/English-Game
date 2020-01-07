@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class ObjectReset : MonoBehaviour
 {
-<<<<<<< Updated upstream
-    [SerializeField] private float minHeight;
-=======
     //------------------------------------------
     //             Made By Thomas
     //------------------------------------------
@@ -22,7 +19,6 @@ public class ObjectReset : MonoBehaviour
     [SerializeField, Tooltip("Object should respawn whenever it gets destroyed.")] private bool respawnOnDestroy = false;
     [SerializeField] private float minHeight = -5;
 
->>>>>>> Stashed changes
     [HideInInspector] private Vector3 startPos;
     [HideInInspector] private Quaternion startRotation;
     [HideInInspector] private Rigidbody rb;
@@ -31,12 +27,10 @@ public class ObjectReset : MonoBehaviour
     private void Start()
     {
         startPos = transform.position;
-<<<<<<< Updated upstream
         if (startPos.y < minHeight) Debug.LogError("Will forever respawn: " + gameObject.name); disable = true;
         startRotation = transform.rotation;
         rb = GetComponent<Rigidbody>();
         if (rb == null) Debug.LogError("Disabled respawning: " + gameObject.name); disable = true;
-=======
         if (startPos.y < minHeight && respawnUpdate)
         {
             Debug.LogWarning("Will forever respawn: " + gameObject.name); 
@@ -50,7 +44,6 @@ public class ObjectReset : MonoBehaviour
             Debug.LogWarning("Disabled respawning: " + gameObject.name); 
             disable = true;
         }
->>>>>>> Stashed changes
     }
 
     private void Update()
@@ -62,8 +55,6 @@ public class ObjectReset : MonoBehaviour
             CodeLibrary.SetVelocity(rb);
         }
     }
-<<<<<<< Updated upstream
-=======
 
     private void OnDestroy()
     {
@@ -82,5 +73,4 @@ public class ObjectReset : MonoBehaviour
             CodeLibrary.SetVelocity(rb);
         }
     }
->>>>>>> Stashed changes
 }
