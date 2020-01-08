@@ -50,7 +50,7 @@ public class PuzzleOneScript : MonoBehaviour
                 return;
             }
             //Act out order and check if there are duplicates
-            ApplyOrder(input);
+            if (Check(input, SemiRandomPictureAspect())) currentCardNumber++;
         }
     }
 
@@ -66,31 +66,6 @@ public class PuzzleOneScript : MonoBehaviour
             return true;
         }
         return false;
-    }
-
-    private void ApplyOrder(ObjectCard input)
-    {
-        switch (currentCardNumber)
-        {
-            case 0:
-                if (Check(input, SemiRandomPictureAspect())) currentCardNumber = 1;
-                break;
-            case 1:
-                if (Check(input, SemiRandomPictureAspect())) currentCardNumber = 2;
-                break;
-            case 2:
-                if (Check(input, SemiRandomPictureAspect())) currentCardNumber = 3;
-                break;
-            case 3:
-                if (Check(input, SemiRandomPictureAspect())) currentCardNumber = 4;
-                break;
-            case 4:
-                if (Check(input, SemiRandomPictureAspect())) currentCardNumber = 5;
-                break;
-            case 5:
-                if (Check(input, SemiRandomPictureAspect())) currentCardNumber = 6;
-                break;
-        }
     }
 
     private void Finished()
