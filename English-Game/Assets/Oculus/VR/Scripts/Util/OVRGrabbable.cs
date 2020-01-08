@@ -37,9 +37,21 @@ public class OVRGrabbable : MonoBehaviour
     protected Collider m_grabbedCollider = null;
     protected OVRGrabber m_grabbedBy = null;
 
-	/// <summary>
-	/// If true, the object can currently be grabbed.
-	/// </summary>
+    //=======checking if object is selected=============
+    bool rayOver = false;
+    public GameObject effect;
+
+    public void isHit()
+    {
+        rayOver = true;
+        Debug.Log("true");
+    }
+    //little timer
+    private float timer = 0;
+
+    /// <summary>
+    /// If true, the object can currently be grabbed.
+    /// </summary>
     public bool allowOffhandGrab
     {
         get { return m_allowOffhandGrab; }
@@ -159,6 +171,21 @@ public class OVRGrabbable : MonoBehaviour
         {
             // Notify the hand to release destroyed grabbables
             m_grabbedBy.ForceRelease(this);
+        }
+    }
+
+
+    private void Update()
+    {
+        timer += 1 * Time.deltaTime;
+        if (effect)
+        {
+            if (rayOver == true && timer > 0.1)
+            {
+                Instantiate(effect, transform.position, transform.rotation);
+                rayOver = false;
+                timer = 0;
+            }
         }
     }
 }

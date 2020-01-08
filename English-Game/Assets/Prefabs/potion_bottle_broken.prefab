@@ -1070,6 +1070,7 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
+  effect: {fileID: 0}
 --- !u!114 &2831327114636265915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1083,3 +1084,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakLimit: 4
+  effect: {fileID: 7353583290451542101, guid: 0d5343e517f651a4db7920f0dab82218, type: 3}

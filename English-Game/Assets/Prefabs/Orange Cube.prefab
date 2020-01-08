@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5577192150954911957}
   - component: {fileID: 5577192150954911967}
   - component: {fileID: 5577192150954911965}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Orange Cube
   m_TagString: GrabbableObject
   m_Icon: {fileID: 0}
@@ -155,3 +155,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationXYZ: {x: 0, y: 0, z: 0}
+  multipleSnap: 0

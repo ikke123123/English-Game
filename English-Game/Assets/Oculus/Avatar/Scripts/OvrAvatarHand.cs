@@ -47,11 +47,17 @@ public class OvrAvatarHand : OvrAvatarComponent
 
         //Draws a raycast from the right hand
         if (isLeftHand != true) {
-            int layerMask = 1 << 8;
+            int layerMaskFloor = 11 << 12;
+            int layerMaskGrab = 1 << 9;
             Vector3 handPointing = transform.TransformDirection(Vector3.forward);
             RaycastHit hit;
 
-            if (Physics.Raycast(transform.position, handPointing, out hit, Mathf.Infinity, layerMask))
+            if (Physics.Raycast(transform.position, handPointing, out hit, Mathf.Infinity, layerMaskGrab))
+            {
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
+                hit.collider.gameObject.GetComponent<OVRGrabbable>().isHit();
+            }
+            if (Physics.Raycast(transform.position, handPointing, out hit, Mathf.Infinity, layerMaskFloor))
             {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
                 hit.collider.gameObject.GetComponent<ChangeColor>().isHit();

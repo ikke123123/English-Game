@@ -1190,7 +1190,7 @@ GameObject:
   - component: {fileID: 4574081048530111545}
   - component: {fileID: 4574081048530785609}
   - component: {fileID: 4574081048530830093}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: CustomHandLeft
   m_TagString: Hand
   m_Icon: {fileID: 0}
@@ -2641,7 +2641,7 @@ GameObject:
   - component: {fileID: 4574081049991396882}
   - component: {fileID: 4574081049988459928}
   - component: {fileID: 4574081049988511662}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: CustomHandRight
   m_TagString: Hand
   m_Icon: {fileID: 0}

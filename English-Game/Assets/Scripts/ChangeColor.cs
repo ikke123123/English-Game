@@ -16,6 +16,8 @@ public class ChangeColor : MonoBehaviour
     public GameObject player;
     public AncorChange ancor;
 
+    public GameObject positionObject;
+
     public bool locked = false;
 
     Vector3 currentPos;
@@ -46,14 +48,21 @@ public class ChangeColor : MonoBehaviour
             //Just makes sure that the color changes if it is hit with the raycast. 
             if (rayOver == true)
             {
+                Debug.Log("RayOver");
                 GetComponent<Renderer>().material.SetColor("_Color", hoverColor);
-                rayOver = false;
-                newPos.x = ancor.difference.x - currentPos.x;
-                newPos.y = ancor.difference.y - currentPos.y;
-                //Turn object on and off here.
+                newPos.x = /*ancor.difference.x +*/ transform.position.x ;
+                newPos.z = /*ancor.difference.z +*/ transform.position.z;
+                //Debug.Log(newPos.z);
+
+                
+                //positionObject.SetActive(true);
+
+                //positionObject.transform.position = newPos;
+                //rayOver = false;
             }
             else
             {
+                //positionObject.SetActive(false);
                 GetComponent<Renderer>().material.SetColor("_Color", startColor);
             }
         }
@@ -62,6 +71,11 @@ public class ChangeColor : MonoBehaviour
     public void isHit()
     {
         rayOver = true;
+    }
+
+    public void unHit()
+    {
+        rayOver = false;
     }
 
     //Reference to this form another script to unlock the locked area. 

@@ -7,6 +7,8 @@ public class BreakScript : MonoBehaviour
     bool canBreak;
     private Rigidbody rb;
     public float breakLimit;
+    public GameObject effect;
+    private bool effectTrigger = true;
 
     private void Awake()
     {
@@ -35,6 +37,11 @@ public class BreakScript : MonoBehaviour
                 transyBit.gameObject.GetComponent<Collider>().enabled = true;
                 transyBit.gameObject.GetComponent<Rigidbody>().isKinematic = false;
                 transyBit.gameObject.transform.parent = null;
+            }
+            if (effectTrigger)
+            {
+                Instantiate(effect, transform.position, transform.rotation);
+                effectTrigger = false;
             }
         }
     }
