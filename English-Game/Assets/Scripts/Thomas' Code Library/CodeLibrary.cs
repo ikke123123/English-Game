@@ -16,6 +16,13 @@ public class CodeLibrary : MonoBehaviour
         collider.center = mesh.mesh.bounds.center;
     }
 
+    public static void IncrementalIncrease(ref int input, int increment, int max, int min = 0)
+    {
+        input += increment;
+        if (input > max) input = min;
+        if (input < min) input = max;
+    }
+
     public static void ResizeSphereColliderToMesh(SphereCollider collider, MeshFilter mesh)
     {
         collider.radius = GetHighestOfVector3(mesh.mesh.bounds.extents);

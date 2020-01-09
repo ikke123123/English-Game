@@ -10,9 +10,15 @@ public class ColorChanger : MonoBehaviour
     //This script can change the color of the
     //liquid within the bottle.
     //------------------------------------------
-    //Last Modification Time: 10:56 08/01/2020
+    //Last Modification Time: 15:15 09/01/2020
 
+    [Header("Properties")]
     [SerializeField] private bool rainbowMode = false;
+    [SerializeField, Range(0.1f, 0.9f)] private float refreshRate = 0.1f;
+    [SerializeField] private Color[] cycle;
+    [SerializeField, Range(0.1f, 0.9f)] private float alpha = 0.6f;
+
+    [Header("Technical")]
     [SerializeField] private MeshRenderer meshRenderer = null;
     [HideInInspector] private int currentNum = 0;
     [HideInInspector] private float time = 0;
@@ -26,33 +32,9 @@ public class ColorChanger : MonoBehaviour
     {
         if (rainbowMode && Time.time >= time)
         {
-            time = Time.time + 0.5f;
-            switch (currentNum)
-            {
-                case 0:
-                    meshRenderer.material.color = ConvertToTransparent(Color.red);
-                    break;
-                case 1:
-                    meshRenderer.material.color = ConvertToTransparent(Color.green);
-                    break;
-                case 2:
-                    meshRenderer.material.color = ConvertToTransparent(Color.blue);
-                    break;
-                case 3:
-                    meshRenderer.material.color = ConvertToTransparent(Color.yellow);
-                    break;
-                case 4:
-                    meshRenderer.material.color = ConvertToTransparent(Color.cyan);
-                    break;
-                case 5:
-                    meshRenderer.material.color = ConvertToTransparent(Color.magenta);
-                    break;
-                case 6:
-                    meshRenderer.material.color = ConvertToTransparent(Color.black);
-                    currentNum = -1;
-                    break;
-            }
-            currentNum++;
+            time = Time.time + refreshRate;
+            ChangeColor(cycle[currentNum]);
+            CodeLibrary.IncrementalIncrease(ref currentNum, 1, cycle.Length - 1);
         }
     }
 
@@ -64,7 +46,7 @@ public class ColorChanger : MonoBehaviour
     private Color ConvertToTransparent(Color input)
     {
         Color newColor = input;
-        newColor.a = 0.6f;
+        newColor.a = alpha;
         return newColor;
     }
 }

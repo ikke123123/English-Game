@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 1474321329374241650}
   - component: {fileID: 7578989334828798582}
   - component: {fileID: 4684905389643195860}
-  m_Layer: 0
+  - component: {fileID: 3628002511031185889}
+  - component: {fileID: 1841933926554054489}
+  m_Layer: 9
   m_Name: Full Bottle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,6 +67,40 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 7574504148769672954, guid: 79840b1ed58605f40858b89ba1d59cf5, type: 3}
+--- !u!114 &3628002511031185889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6222003302556858284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_allowOffhandGrab: 1
+  m_snapPosition: 0
+  m_snapOrientation: 0
+  m_snapOffset: {fileID: 0}
+  m_grabPoints: []
+  effect: {fileID: 0}
+--- !u!114 &1841933926554054489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6222003302556858284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0efab78495fe7fb499dc19894a708ad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rainbowMode: 0
+  refreshRate: 0.1
+  cycle: []
+  meshRenderer: {fileID: 570455141829098599}
 --- !u!1001 &3225018262029381959
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76,6 +112,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Joined Bottle
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 3b99b3a4c29950848b7e3a6d54d807e1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3b99b3a4c29950848b7e3a6d54d807e1,
         type: 3}
@@ -152,11 +193,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1474321329374241650}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 2059255b90922974182bfaca57712273,
-        type: 3}
-      propertyPath: m_Name
-      value: Cork
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2059255b90922974182bfaca57712273,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -212,12 +248,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2059255b90922974182bfaca57712273,
+        type: 3}
+      propertyPath: m_Name
+      value: Cork
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2059255b90922974182bfaca57712273,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 2059255b90922974182bfaca57712273,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bcab0be2a63a01942a7c6a2bdfef0605, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: -6860895033569716450, guid: 2059255b90922974182bfaca57712273,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -6860895033569716450, guid: 2059255b90922974182bfaca57712273, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2059255b90922974182bfaca57712273, type: 3}
 --- !u!4 &2469742131739034429 stripped
 Transform:
@@ -232,11 +284,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1474321329374241650}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: d0f251e1599b045438e4a617550177c7,
-        type: 3}
-      propertyPath: m_Name
-      value: Liquid
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d0f251e1599b045438e4a617550177c7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -292,6 +339,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d0f251e1599b045438e4a617550177c7,
+        type: 3}
+      propertyPath: m_Name
+      value: Liquid
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d0f251e1599b045438e4a617550177c7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: d0f251e1599b045438e4a617550177c7,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -302,6 +359,12 @@ PrefabInstance:
 --- !u!4 &2994091355724085928 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: d0f251e1599b045438e4a617550177c7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7851906064941961650}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &570455141829098599 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: d0f251e1599b045438e4a617550177c7,
     type: 3}
   m_PrefabInstance: {fileID: 7851906064941961650}
   m_PrefabAsset: {fileID: 0}
