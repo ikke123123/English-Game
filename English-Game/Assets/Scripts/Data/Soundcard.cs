@@ -18,7 +18,7 @@ public class Soundcard : ScriptableObject
     [SerializeField, Range(-1, -0.01f), Tooltip("For every Fixed Update how much should the volume decrease? -1 is instantly turned off, -0.01 is a slow ramp-off. This will only be used if the audio is triggered to turn off")] public float rampOffStep;
     [SerializeField, Range(0.01f, 1), Tooltip("For every Fixed Update how much should the volume increase? 1 is instantly turned on, 0.01 is a slow turn-on. This will always be activated when the audio clip is triggered to play")] public float rampOnStep;
     [SerializeField] public bool loop;
-    [SerializeField] public SoundCategory catagory;
+    [SerializeField] public SoundCategory category;
     [HideInInspector] public AudioSource audioSource;
     [HideInInspector] public State state = State.off;
     [HideInInspector] public bool paused = false;

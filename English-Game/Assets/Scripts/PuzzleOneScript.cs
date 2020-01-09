@@ -25,8 +25,9 @@ public class PuzzleOneScript : MonoBehaviour
     [SerializeField] private UnityEvent toDoAfterComplete;
 
     [Header("Puzzle Settings")]
-    [SerializeField, Tooltip("Measured from the last card, which card should be the right one"), Range(0, 5)] private int cardAnswer = 0;
-    [SerializeField] private bool disablePuzzle = false;
+    [SerializeField, Tooltip("Measured from the last card, which card should be the right one."), Range(0, 5)] private int cardAnswer = 0;
+    [SerializeField, Tooltip("This bool is activated when the puzzle is finished, this bool is only here for debugging.")] private bool disablePuzzle = false;
+    [SerializeField] private string textAfterCompletion = "";
 
     //Hidden from inspector
     [HideInInspector] private int currentCardNumber = 0;
@@ -50,7 +51,7 @@ public class PuzzleOneScript : MonoBehaviour
                 return;
             }
             //Act out order and check if there are duplicates
-            if (Check(input, SemiRandomPictureAspect())) currentCardNumber++;
+            ApplyOrder(input);
         }
     }
 
@@ -68,11 +69,36 @@ public class PuzzleOneScript : MonoBehaviour
         return false;
     }
 
+    private void ApplyOrder(ObjectCard input)
+    {
+        switch (currentCardNumber)
+        {
+            case 0:
+                if (Check(input, SemiRandomPictureAspect())) currentCardNumber = 1;
+                break;
+            case 1:
+                if (Check(input, SemiRandomPictureAspect())) currentCardNumber = 2;
+                break;
+            case 2:
+                if (Check(input, SemiRandomPictureAspect())) currentCardNumber = 3;
+                break;
+            case 3:
+                if (Check(input, SemiRandomPictureAspect())) currentCardNumber = 4;
+                break;
+            case 4:
+                if (Check(input, SemiRandomPictureAspect())) currentCardNumber = 5;
+                break;
+            case 5:
+                if (Check(input, SemiRandomPictureAspect())) currentCardNumber = 6;
+                break;
+        }
+    }
+
     private void Finished()
     {
         toDoAfterComplete.Invoke();
         disablePuzzle = true;
-        ApplyText("Great job, you did it! Have some Radiohead", false);
+        ApplyText(textAfterCompletion, false);
     }
 
     private bool Check(ObjectCard input, PictureAspect tag)

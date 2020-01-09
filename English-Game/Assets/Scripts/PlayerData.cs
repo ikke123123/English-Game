@@ -14,6 +14,8 @@ public class PlayerData : MonoBehaviour
     //player is, what he/she has to do, and this
     //script can save those things for later 
     //use.
+    //------------------------------------------
+    //Last Modification Time: 15:14 07/01/2020
 
     [Header("Milestone Data")]
     [SerializeField] private Milestones[] milestones;
@@ -66,6 +68,12 @@ public class PlayerData : MonoBehaviour
             currentMilestone = milestones[milestoneID];
             UpdateUserProgress();
             currentMilestone.toDoWhenStarted.Invoke();
+            return true;
+        }
+        else if (milestones.Length == 0)
+        {
+            currentMilestoneID = milestoneID;
+            UpdateUserProgress();
             return true;
         }
         SetCurrentMilestone();

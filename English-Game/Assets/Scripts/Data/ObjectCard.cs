@@ -35,19 +35,3 @@ public class ObjectCard : ScriptableObject
         }
     }
 }
-
-//[System.Serializable]
-//public class PictureTag
-//{
-//    [SerializeField] public Locations location;
-//    [SerializeField] public Activities activity;
-//    [SerializeField] public Attributes attribute;
-//}
-
-//public enum Locations { untagged, blue, gray, green };
-//public enum Activities { untagged, standard, lighter, darker };
-//public enum Attributes { untagged, normal, metallic, transparent };
-
-//public enum Locations { untagged, beach, forrest, meadow };
-//public enum Activities { untagged, standing, sitting, lying };
-//public enum Attributes { untagged, pug, banana, apple };

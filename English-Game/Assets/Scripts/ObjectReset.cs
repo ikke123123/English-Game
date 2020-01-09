@@ -13,38 +13,58 @@ public class ObjectReset : MonoBehaviour
     //Use this script on objects that are missi-
     //on critical, and need to be respawned when
     //they get lost.
+    //Last Modification Time: 15:13 07/01/2020
 
+    [Header("Settings")]
+    [SerializeField, Tooltip("Object should respawn whenever it gets below the Minimal Height.")] private bool respawnUpdate = false;
+    [SerializeField, Tooltip("Object should respawn whenever it gets destroyed.")] private bool respawnOnDestroy = false;
     [SerializeField] private float minHeight = -5;
+
     [HideInInspector] private Vector3 startPos;
     [HideInInspector] private Quaternion startRotation;
     [HideInInspector] private Rigidbody rb;
-    [HideInInspector] private bool disable = false;
+    [HideInInspector] private bool disable;
 
     private void Start()
     {
         startPos = transform.position;
-        if (startPos.y < minHeight)
-        {
-            Debug.LogError("Will forever respawn: " + gameObject.name); 
-            disable = true;
-        }
-  
+        if (startPos.y < minHeight) Debug.LogError("Will forever respawn: " + gameObject.name); disable = true;
         startRotation = transform.rotation;
         rb = GetComponent<Rigidbody>();
-        if (rb == null)
+        if (rb == null) Debug.LogError("Disabled respawning: " + gameObject.name); disable = true;
+        if (startPos.y < minHeight && respawnUpdate)
         {
-            Debug.LogError("Disabled respawning: " + gameObject.name); 
+            Debug.LogWarning("Will forever respawn: " + gameObject.name);
+            disable = true;
+        }
+
+        startRotation = transform.rotation;
+        if (GetComponent<Rigidbody>())
+        {
+            rb = GetComponent<Rigidbody>();
+        }
+        else
+        {
+            Debug.LogWarning("Disabled respawning: " + gameObject.name);
             disable = true;
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (disable == false && transform.position.y < minHeight)
+        if (respawnUpdate && disable == false && transform.position.y < minHeight)
         {
             transform.position = startPos;
             transform.rotation = startRotation;
             CodeLibrary.SetVelocity(rb);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (disable == false && respawnOnDestroy)
+        {
+            GameObject copy = Instantiate(gameObject, startPos, startRotation);
         }
     }
 

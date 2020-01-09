@@ -2,14 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Combination Card", menuName = "Custom/Combination Card")]
 public class Combinations : ScriptableObject
 {
-    //------------------------------------------
-    //             Made By Thomas
-    //------------------------------------------
-    //This script contains the possible combina-
-    //tions that you can do with other objects.
-
     [SerializeField] public ObjectCard[] combinesWith;
     [SerializeField] public ObjectCard result;
 }

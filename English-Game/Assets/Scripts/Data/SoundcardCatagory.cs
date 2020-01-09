@@ -22,7 +22,7 @@ public class SoundCategory : ScriptableObject
 
     public static bool CategoryStateOff(Soundcard soundcard)
     {
-        if (soundcard.catagory == null || soundcard.catagory.catagoryState == State.off)
+        if (soundcard.category == null || soundcard.category.catagoryState == State.off)
         { 
             return true;
         }
@@ -31,25 +31,25 @@ public class SoundCategory : ScriptableObject
 
     public static void SetCategoryStateOff(Soundcard soundcard)
     {
-        if (soundcard.catagory != null)
+        if (soundcard.category != null)
         {
-            soundcard.catagory.catagoryState = State.off;
+            soundcard.category.catagoryState = State.off;
         }
     }
 
     public static void SetCategoryStateOn(Soundcard soundcard)
     {
-        if (soundcard.catagory != null)
+        if (soundcard.category != null)
         {
-            soundcard.catagory.catagoryState = State.playing;
+            soundcard.category.catagoryState = State.playing;
         }
     }
 
     public static void AddSoundcardToCatagory(Soundcard soundcard)
     {
-        if (soundcard.catagory != null)
+        if (soundcard.category != null)
         {
-            soundcard.catagory.soundcards.Add(soundcard);
+            soundcard.category.soundcards.Add(soundcard);
         }
     }
 }
