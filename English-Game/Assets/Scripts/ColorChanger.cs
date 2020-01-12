@@ -13,10 +13,12 @@ public class ColorChanger : MonoBehaviour
     //Last Modification Time: 15:15 09/01/2020
 
     [Header("Properties")]
+    [SerializeField, Range(0.1f, 0.9f)] private float alpha = 0.6f;
+
+    [Header("Properties [Rainbow mode]")]
     [SerializeField] private bool rainbowMode = false;
     [SerializeField, Range(0.1f, 0.9f)] private float refreshRate = 0.1f;
     [SerializeField] private Color[] cycle;
-    [SerializeField, Range(0.1f, 0.9f)] private float alpha = 0.6f;
 
     [Header("Technical")]
     [SerializeField] private MeshRenderer meshRenderer = null;

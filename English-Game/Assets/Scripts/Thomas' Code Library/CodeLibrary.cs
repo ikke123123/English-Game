@@ -10,6 +10,35 @@ public class CodeLibrary : MonoBehaviour
     //------------------------------------------
     //All kinds of useful, and less useful code things
 
+    public static void RemoveParents(Transform transformInput)
+    {
+        foreach (Transform transform in transformInput)
+        {
+            RemoveParents(transform);
+            transform.parent = null;
+        }
+    }
+
+    /// <summary>
+    /// Replaces the Game Object with another Game Object, with the same velocity and positition.
+    /// </summary>
+    /// <param name="replace"></param>
+    /// <param name="with"></param>
+    public static void ReplaceObject(GameObject replace, GameObject with)
+    {
+        GameObject tempObject = Instantiate(with, replace.transform.position, replace.transform.rotation);
+        if (replace.GetComponent<Rigidbody>() == false) return;
+        if (tempObject.GetComponent<Rigidbody>() == false) tempObject.AddComponent<Rigidbody>();
+        MatchSpeed(tempObject.GetComponent<Rigidbody>(), replace.GetComponent<Rigidbody>());
+        Destroy(replace);
+    }
+
+    public static void MatchSpeed(Rigidbody subject, Rigidbody matchedTo)
+    {
+        subject.velocity = matchedTo.velocity;
+        subject.angularVelocity = matchedTo.angularVelocity;
+    }
+
     public static void ResizeBoxColliderToMeshFilter(BoxCollider collider, MeshFilter mesh)
     {
         collider.size = mesh.mesh.bounds.size;

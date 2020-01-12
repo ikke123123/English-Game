@@ -4,45 +4,16 @@ using UnityEngine;
 
 public class BreakScript : MonoBehaviour
 {
-    bool canBreak;
-    private Rigidbody rb;
-    public float breakLimit;
-    public GameObject effect;
-    private bool effectTrigger = true;
+    [SerializeField] private float breakLimit = 1;
+    [SerializeField] private GameObject effect;
+    [SerializeField] private GameObject replacementObject;
 
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
-
-    private void FixedUpdate()
-    {
-
-        if (!canBreak)
-        {
-            if (rb.velocity.magnitude > breakLimit)
-            {
-                canBreak = true;
-            }
-        }
-        //Debug.Log("Bottle " + rb.velocity.magnitude);
-    }
     private void OnCollisionEnter(Collision other)
     {
-        if (canBreak)
+        if (other.relativeVelocity.magnitude > breakLimit)
         {
-
-            foreach (Transform transyBit in transform)
-            {
-                transyBit.gameObject.GetComponent<Collider>().enabled = true;
-                transyBit.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-                transyBit.gameObject.transform.parent = null;
-            }
-            if (effectTrigger)
-            {
-                Instantiate(effect, transform.position, transform.rotation);
-                effectTrigger = false;
-            }
+            Instantiate(effect, transform.position, transform.rotation);
+            CodeLibrary.ReplaceObject(gameObject, replacementObject);
         }
     }
 }
