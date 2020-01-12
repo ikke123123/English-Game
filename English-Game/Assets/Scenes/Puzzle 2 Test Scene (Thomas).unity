@@ -359,17 +359,17 @@ PrefabInstance:
     - target: {fileID: 7169745925035743943, guid: 54fa13106ae728342ad84ffbce808dbd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.9678376
+      value: -0.618
       objectReference: {fileID: 0}
     - target: {fileID: 7169745925035743943, guid: 54fa13106ae728342ad84ffbce808dbd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 7169745925035743943, guid: 54fa13106ae728342ad84ffbce808dbd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.07478672
+      value: 0.234
       objectReference: {fileID: 0}
     - target: {fileID: 7169745925035743943, guid: 54fa13106ae728342ad84ffbce808dbd,
         type: 3}
@@ -415,6 +415,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479129542005847448, guid: 54fa13106ae728342ad84ffbce808dbd,
+        type: 3}
+      propertyPath: breakLimit
+      value: 10.21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54fa13106ae728342ad84ffbce808dbd, type: 3}
@@ -545,6 +550,7 @@ MonoBehaviour:
   combinationComponent: 2
   combinationObject: {fileID: 979328330}
   possibleCombinations: []
+  combination: {fileID: 0}
 --- !u!1 &979328329
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,6 +584,11 @@ MonoBehaviour:
   fullComponent: {fileID: 11400000, guid: 19e386de4146cbd42b899a54958658c9, type: 2}
   alternativeComponent: {fileID: 11400000, guid: e043cc86ce6687747b1f331377e29b74,
     type: 2}
+  canCombine: 0
+  possibleCombination: {fileID: 0}
+  gameObjectInCombination: []
+  emptyComponentGameObject: {fileID: 0}
+  receivedComponent: {fileID: 0}
 --- !u!4 &979328331
 Transform:
   m_ObjectHideFlags: 0
@@ -953,6 +964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectResets: []
   reset: 0
+  canRespawnOnDestroy: 1
 --- !u!1 &1716598078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,6 +1292,7 @@ MonoBehaviour:
   combinationObject: {fileID: 979328330}
   possibleCombinations:
   - {fileID: 11400000, guid: 5ba5d47406ce4e546a96e34da8e536c6, type: 2}
+  combination: {fileID: 0}
 --- !u!1 &2071360494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,12 +1385,12 @@ PrefabInstance:
     - target: {fileID: 604664423767047361, guid: 47be9bb67ec3a084abad0c371ef6316a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.39
+      value: -0.567
       objectReference: {fileID: 0}
     - target: {fileID: 604664423767047361, guid: 47be9bb67ec3a084abad0c371ef6316a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.05
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 604664423767047361, guid: 47be9bb67ec3a084abad0c371ef6316a,
         type: 3}
@@ -1452,12 +1465,12 @@ PrefabInstance:
     - target: {fileID: 3208363690365594838, guid: 1332d71995bfea5478cd31d8c01f8cdc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.39
+      value: -0.736
       objectReference: {fileID: 0}
     - target: {fileID: 3208363690365594838, guid: 1332d71995bfea5478cd31d8c01f8cdc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.05
+      value: 2.85
       objectReference: {fileID: 0}
     - target: {fileID: 3208363690365594838, guid: 1332d71995bfea5478cd31d8c01f8cdc,
         type: 3}
@@ -1606,17 +1619,17 @@ PrefabInstance:
     - target: {fileID: 7608190556612043997, guid: 42f0950f57e1b3641bb459d745619bde,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.39
+      value: 0.466
       objectReference: {fileID: 0}
     - target: {fileID: 7608190556612043997, guid: 42f0950f57e1b3641bb459d745619bde,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.05
+      value: 2.54
       objectReference: {fileID: 0}
     - target: {fileID: 7608190556612043997, guid: 42f0950f57e1b3641bb459d745619bde,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.022999996
+      value: -0.077
       objectReference: {fileID: 0}
     - target: {fileID: 7608190556612043997, guid: 42f0950f57e1b3641bb459d745619bde,
         type: 3}

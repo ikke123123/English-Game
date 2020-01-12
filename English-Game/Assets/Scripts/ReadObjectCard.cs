@@ -25,6 +25,8 @@ public class ReadObjectCard : MonoBehaviour
     [SerializeField, Tooltip("Select purpose of object data reader. Can be left at unselected if not used.")] private CombinationComponent combinationComponent;
     [SerializeField, Tooltip("Script that decides what needs to happen with the object cards that are pushed, made for puzzle 2. Can be left empty.")] private Combination combinationObject = null;
     [SerializeField, Tooltip("All possible combinations (leave out the alternative possible). Put only on the read object/Collider")] private Combinations[] possibleCombinations;
+    //Remove later
+    [SerializeField] Combinations combination;
 
     [HideInInspector] private List<ObjectCard> objectCards = new List<ObjectCard>();
     [HideInInspector] private List<GameObject> gameObjects = new List<GameObject>();
@@ -74,8 +76,8 @@ public class ReadObjectCard : MonoBehaviour
     public void PushCombination()
     {
         if (combinationObject == null) return;
-        Combinations tempCombinations = ScriptableObject.CreateInstance<Combinations>();
-        if (CombinationCheck(tempCombinations)) combinationObject.CatchPossibleCombinations(gameObjects.ToArray(), tempCombinations);
+
+        if (CombinationCheck()) combinationObject.CatchPossibleCombinations(gameObjects.ToArray(), combination);
     }
 
     public void PushCardAndObject(ObjectCard card, GameObject gameObject)
@@ -90,12 +92,13 @@ public class ReadObjectCard : MonoBehaviour
         pushCard.Invoke();
     }
 
-    private bool CombinationCheck(Combinations toReturn)
+    private bool CombinationCheck()
     {
+        combination = null;
         List<ObjectCard> remainingCards = new List<ObjectCard>();
         foreach (Combinations combinations in possibleCombinations)
         {
-            if (combinations.combinesWith.Length > objectCards.Count)
+            if (combinations.combinesWith.Length == objectCards.Count)
             {
                 remainingCards.Clear();
                 remainingCards.AddRange(combinations.combinesWith);
@@ -105,7 +108,7 @@ public class ReadObjectCard : MonoBehaviour
                 }
                 if (remainingCards.Count == 0)
                 {
-                    toReturn = combinations;
+                    combination = combinations;
                     return true;
                 }
             }

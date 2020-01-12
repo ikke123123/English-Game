@@ -16,11 +16,11 @@ public class Combination : MonoBehaviour
     [SerializeField, Tooltip("The resulting component, for instance the full bottle.")] private ObjectCard fullComponent;
     [SerializeField, Tooltip("If the game doesn't receive a correct combination object, it will create this instead.")] private Combinations alternativeComponent;
 
-    [HideInInspector] private bool canCombine = false;
-    [HideInInspector] private Combinations possibleCombination;
-    [HideInInspector] private GameObject[] gameObjectInCombination;
-    [HideInInspector] private GameObject emptyComponentGameObject;
-    [HideInInspector] private ObjectCard receivedComponent;
+    [SerializeField] private bool canCombine = false;
+    [SerializeField] private Combinations possibleCombination;
+    [SerializeField] private GameObject[] gameObjectInCombination;
+    [SerializeField] private GameObject emptyComponentGameObject;
+    [SerializeField] private ObjectCard receivedComponent;
 
     private void Awake()
     {
@@ -29,52 +29,79 @@ public class Combination : MonoBehaviour
         if (alternativeComponent == null) Debug.LogError("Alternative component wasn't assigned.");
     }
 
+    //Receives From Read
     public bool CatchPossibleCombinations(GameObject[] gameObjects, Combinations combination)
     {
+        Debug.Log("Read");
         if (gameObjectInCombination == gameObjects) gameObjectInCombination = null;
+        else gameObjectInCombination = gameObjects;
         if (possibleCombination == combination) possibleCombination = null;
+        else possibleCombination = combination;
         canCombine = CheckIfCanCombine();
+        Debug.Log(canCombine);
         return canCombine;
     }
 
+    //Receives from Write
     public bool CatchEmptyComponent(GameObject gameObject, ObjectCard objectCard)
     {
+        Debug.Log("Write");
         if (emptyComponentGameObject == gameObject) emptyComponentGameObject = null;
+        else emptyComponentGameObject = gameObject;
         if (receivedComponent == objectCard) receivedComponent = null;
+        else receivedComponent = objectCard;
         canCombine = CheckIfCanCombine();
+        Debug.Log(canCombine);
         return canCombine;
     }
 
     public void Combine()
     {
+        Debug.Log("Combine void ran");
         if (canCombine)
         {
-            ApplyCombine(possibleCombination);
+            ApplyCombine(/*possibleCombination*/);
             return;
         }
         if (gameObjectInCombination != null && gameObjectInCombination.Length > 0 && emptyComponentGameObject != null && receivedComponent != null && receivedComponent == emptyComponent)
         {
-            ApplyCombine(alternativeComponent);
+            //ApplyCombine(alternativeComponent);
         }
     }
 
-    private void ApplyCombine(Combinations combinations)
+    private void ApplyCombine()
     {
+        Debug.Log("Combine apply ran");
         foreach (GameObject gameObject in gameObjectInCombination) Destroy(gameObject);
-        GameObject newObject = Instantiate(fullComponent.prefab, emptyComponentGameObject.transform);
+        GameObject newObject = Instantiate(fullComponent.prefab, emptyComponentGameObject.transform.position, emptyComponentGameObject.transform.rotation);
         if (newObject.GetComponent<ObjectCardHolder>() == false) newObject.AddComponent<ObjectCardHolder>();
-        newObject.GetComponent<ObjectCardHolder>().objectCard = combinations.result;
-        newObject.GetComponent<ColorChanger>().ChangeColor(combinations.result.prefab.GetComponent<MeshRenderer>().material.color);
-        Destroy(emptyComponent);
-        CatchPossibleCombinations(gameObjectInCombination, possibleCombination);
+        newObject.GetComponent<ObjectCardHolder>().objectCard = possibleCombination.result;
+        newObject.GetComponent<ColorChanger>().ChangeColor(possibleCombination.result.prefab.GetComponent<MeshRenderer>().sharedMaterial.GetColor("_Color"));
+        Destroy(emptyComponentGameObject);
+        CatchPossibleCombinations(gameObjectInCombination, this.possibleCombination);
         CatchEmptyComponent(emptyComponentGameObject, receivedComponent);
     }
 
     private bool CheckIfCanCombine()
     {
-        if (possibleCombination != null && gameObjectInCombination.Length > 0 && receivedComponent == emptyComponent && receivedComponent.assignedGameObject.Contains(emptyComponentGameObject))
+        Debug.Log("Can Combine?");
+        Debug.Log(possibleCombination);
+        if (possibleCombination != null)
         {
-            return true;
+            Debug.Log("0");
+            if (gameObjectInCombination.Length > 0)
+            {
+                Debug.Log("1");
+                if (receivedComponent == emptyComponent)
+                {
+                    Debug.Log("2");
+                    if (receivedComponent.assignedGameObject.Contains(emptyComponentGameObject))
+                    {
+                        Debug.Log("3");
+                        return true;
+                    }
+                }
+            }
         }
         return false;
     }

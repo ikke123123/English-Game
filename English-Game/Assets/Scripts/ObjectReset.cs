@@ -54,7 +54,7 @@ public class ObjectReset : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (disable == false && respawnOnDestroy && resetManager.CanRespawn())
+        if (disable == false && respawnOnDestroy && resetManager.canRespawnOnDestroy)
         {
             clone.GetComponent<ObjectReset>().respawnOnDestroy = true;       
             clone.SetActive(true);

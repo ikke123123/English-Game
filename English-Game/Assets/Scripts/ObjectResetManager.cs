@@ -12,7 +12,7 @@ public class ObjectResetManager : MonoBehaviour
     [SerializeField] private List<ObjectReset> objectResets = new List<ObjectReset>();
     [SerializeField] private bool reset = false;
 
-    [HideInInspector] private bool canRespawnOnDestroy = true;
+    [HideInInspector] public bool canRespawnOnDestroy = true;
 
     private void FixedUpdate()
     {
@@ -31,11 +31,6 @@ public class ObjectResetManager : MonoBehaviour
     public void ObjectResetRemove(ObjectReset input)
     {
         objectResets.Remove(input);
-    }
-
-    public bool CanRespawn()
-    {
-        return canRespawnOnDestroy;
     }
 
     private void OnDestroy()
