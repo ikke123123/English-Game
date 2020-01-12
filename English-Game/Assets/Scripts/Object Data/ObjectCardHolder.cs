@@ -12,14 +12,14 @@ public class ObjectCardHolder : MonoBehaviour
 
     [SerializeField] public ObjectCard objectCard;
 
-    private void Start()
+    private void OnEnable()
     {
         if (objectCard != null)
         {
             objectCard.assignedGameObject.Add(gameObject);
             return;
         }
-        Debug.LogWarning("An card wasn't assigned: " + gameObject.name);
+        Debug.LogWarning("A card wasn't assigned: " + gameObject.name);
     }
 
     private void OnDestroy()

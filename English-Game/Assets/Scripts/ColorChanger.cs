@@ -42,13 +42,6 @@ public class ColorChanger : MonoBehaviour
 
     public void ChangeColor(Color input)
     {
-        meshRenderer.material.color = ConvertToTransparent(input);
-    }
-
-    private Color ConvertToTransparent(Color input)
-    {
-        Color newColor = input;
-        newColor.a = alpha;
-        return newColor;
+        meshRenderer.material.color = CodeLibrary.ConvertToTransparent(input, alpha);
     }
 }

@@ -183,4 +183,11 @@ public class CodeLibrary : MonoBehaviour
         }
         return false;
     }
+
+    public static Color ConvertToTransparent(Color input, float alpha)
+    {
+        Color newColor = input;
+        newColor.a = alpha;
+        return newColor;
+    }
 }

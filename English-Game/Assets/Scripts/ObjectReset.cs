@@ -20,52 +20,54 @@ public class ObjectReset : MonoBehaviour
     [SerializeField, Tooltip("Object should respawn whenever it gets destroyed.")] private bool respawnOnDestroy = false;
     [SerializeField] private float minHeight = -5;
 
+    [HideInInspector] private GameObject clone;
+    [HideInInspector] private ObjectResetManager resetManager;
     [HideInInspector] private Vector3 startPos;
     [HideInInspector] private Quaternion startRotation;
-    [HideInInspector] private Rigidbody rb;
-    [HideInInspector] private bool disable;
+    [HideInInspector] private bool disable = false;
 
-    private void Start()
+    private void OnEnable()
     {
+        if (respawnOnDestroy == true)
+        {
+            SpawnClone();
+        }
+        resetManager = GameObject.FindGameObjectWithTag("Data Object").GetComponent<ObjectResetManager>();
+        resetManager.ObjectResetAdd(this);
+
         startPos = transform.position;
-        if (startPos.y < minHeight) Debug.LogError("Will forever respawn: " + gameObject.name); disable = true;
-        startRotation = transform.rotation;
-        rb = GetComponent<Rigidbody>();
-        if (rb == null) Debug.LogError("Disabled respawning: " + gameObject.name); disable = true;
         if (startPos.y < minHeight && respawnUpdate)
         {
-            Debug.LogWarning("Will forever respawn: " + gameObject.name);
+            Debug.LogError("Will forever respawn: " + gameObject.name); 
             disable = true;
         }
-
         startRotation = transform.rotation;
-        if (GetComponent<Rigidbody>())
-        {
-            rb = GetComponent<Rigidbody>();
-        }
-        else
-        {
-            Debug.LogWarning("Disabled respawning: " + gameObject.name);
-            disable = true;
-        }
     }
 
     private void Update()
     {
-        if (respawnUpdate && disable == false && transform.position.y < minHeight)
+        if (respawnUpdate && transform.position.y < minHeight)
         {
-            transform.position = startPos;
-            transform.rotation = startRotation;
-            CodeLibrary.SetVelocity(rb);
+            ResetPosition();
         }
     }
 
     private void OnDestroy()
     {
-        if (disable == false && respawnOnDestroy)
+        if (disable == false && respawnOnDestroy && resetManager.CanRespawn())
         {
-            GameObject copy = Instantiate(gameObject, startPos, startRotation);
+            clone.GetComponent<ObjectReset>().respawnOnDestroy = true;       
+            clone.SetActive(true);
+            resetManager.ObjectResetRemove(this);
         }
+    }
+
+    public void SpawnClone()
+    {
+        respawnOnDestroy = false;
+        clone = Instantiate(gameObject, transform.position, transform.rotation);
+        clone.SetActive(false);
+        respawnOnDestroy = true;
     }
 
     public void ResetPosition()
@@ -74,7 +76,7 @@ public class ObjectReset : MonoBehaviour
         {
             transform.position = startPos;
             transform.rotation = startRotation;
-            CodeLibrary.SetVelocity(rb);
+            CodeLibrary.SetVelocity(gameObject.GetComponent<Rigidbody>());
         }
     }
 }

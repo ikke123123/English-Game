@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 1474321329374241650}
   - component: {fileID: 7578989334828798582}
   - component: {fileID: 4684905389643195860}
+  - component: {fileID: 1804689732160430167}
   - component: {fileID: 3628002511031185889}
   - component: {fileID: 1841933926554054489}
+  - component: {fileID: 135040911875635442}
   m_Layer: 9
   m_Name: Full Bottle
   m_TagString: Untagged
@@ -67,6 +69,23 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 7574504148769672954, guid: 79840b1ed58605f40858b89ba1d59cf5, type: 3}
+--- !u!114 &1804689732160430167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6222003302556858284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b536a9ffecb69f04689df8cd94f3d7bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breakLimit: 3
+  effect: {fileID: 7353583290451542101, guid: 0d5343e517f651a4db7920f0dab82218, type: 3}
+  liquid: {fileID: 570455141829098599}
+  replacementObject: {fileID: 8105522476617803581, guid: 3f61b094da6e4d14dbd32d0c3a687453,
+    type: 3}
 --- !u!114 &3628002511031185889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +133,19 @@ MonoBehaviour:
   - {r: 1, g: 0.989607, b: 0, a: 0}
   - {r: 1, g: 0.67145586, b: 0, a: 0}
   meshRenderer: {fileID: 570455141829098599}
+--- !u!114 &135040911875635442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6222003302556858284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee6329c571043c40a96d873914322ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectCard: {fileID: 11400000, guid: 19e386de4146cbd42b899a54958658c9, type: 2}
 --- !u!1001 &1148349079325444305
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ApplyParticleColor : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem.MainModule particles;
+    [SerializeField] private ParticleSystem particles;
 
     public void SetColor(Material input)
     {
-        particles.startColor = input.color;
+        ParticleSystem.MainModule main = particles.main;
+        main.startColor = input.color;
     }
 }

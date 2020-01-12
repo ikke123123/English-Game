@@ -24,6 +24,7 @@ public class ReadObjectCard : MonoBehaviour
     [Header("Puzzle Two")]
     [SerializeField, Tooltip("Select purpose of object data reader. Can be left at unselected if not used.")] private CombinationComponent combinationComponent;
     [SerializeField, Tooltip("Script that decides what needs to happen with the object cards that are pushed, made for puzzle 2. Can be left empty.")] private Combination combinationObject = null;
+    [SerializeField, Tooltip("All possible combinations (leave out the alternative possible). Put only on the read object/Collider")] private Combinations[] possibleCombinations;
 
     [HideInInspector] private List<ObjectCard> objectCards = new List<ObjectCard>();
     [HideInInspector] private List<GameObject> gameObjects = new List<GameObject>();
@@ -92,24 +93,20 @@ public class ReadObjectCard : MonoBehaviour
     private bool CombinationCheck(Combinations toReturn)
     {
         List<ObjectCard> remainingCards = new List<ObjectCard>();
-        List<Combinations> processedCombinations = new List<Combinations>();
-        foreach (ObjectCard objectCard in objectCards)
+        foreach (Combinations combinations in possibleCombinations)
         {
-            foreach (Combinations combinations in objectCard.combinations)
+            if (combinations.combinesWith.Length > objectCards.Count)
             {
-                if (processedCombinations.Contains(combinations) == false && combinations.combinesWith.Length > objectCards.Count)
+                remainingCards.Clear();
+                remainingCards.AddRange(combinations.combinesWith);
+                foreach (ObjectCard objectCard in objectCards)
                 {
-                    remainingCards.Clear();
-                    remainingCards.AddRange(combinations.combinesWith);
-                    foreach (ObjectCard objectCard1 in objectCards)
-                    {
-                        if (remainingCards.Remove(objectCard1) == false) break;
-                    }
-                    if (remainingCards.Count == 0)
-                    {
-                        toReturn = combinations;
-                        return true;
-                    }
+                    if (remainingCards.Remove(objectCard) == false) break;
+                }
+                if (remainingCards.Count == 0)
+                {
+                    toReturn = combinations;
+                    return true;
                 }
             }
         }

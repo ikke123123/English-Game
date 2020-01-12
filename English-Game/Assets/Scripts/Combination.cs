@@ -16,7 +16,7 @@ public class Combination : MonoBehaviour
     [SerializeField, Tooltip("The resulting component, for instance the full bottle.")] private ObjectCard fullComponent;
     [SerializeField, Tooltip("If the game doesn't receive a correct combination object, it will create this instead.")] private Combinations alternativeComponent;
 
-    [HideInInspector] private bool canCombine;
+    [HideInInspector] private bool canCombine = false;
     [HideInInspector] private Combinations possibleCombination;
     [HideInInspector] private GameObject[] gameObjectInCombination;
     [HideInInspector] private GameObject emptyComponentGameObject;
@@ -50,7 +50,9 @@ public class Combination : MonoBehaviour
         if (canCombine)
         {
             ApplyCombine(possibleCombination);
-        } else if (gameObjectInCombination.Length > 0 && emptyComponentGameObject != null && receivedComponent == emptyComponent)
+            return;
+        }
+        if (gameObjectInCombination != null && gameObjectInCombination.Length > 0 && emptyComponentGameObject != null && receivedComponent != null && receivedComponent == emptyComponent)
         {
             ApplyCombine(alternativeComponent);
         }

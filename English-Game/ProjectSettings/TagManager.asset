@@ -4,10 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Data Object
   - Hand
   - GrabbableObject
   - TriggerBox
+  - Data Object
   layers:
   - Default
   - TransparentFX

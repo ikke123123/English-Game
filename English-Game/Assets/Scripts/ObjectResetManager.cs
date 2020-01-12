@@ -9,8 +9,10 @@ public class ObjectResetManager : MonoBehaviour
     //------------------------------------------
     //Can reset all objects in its array.
 
-    [SerializeField] private ObjectReset[] objectResets;
+    [SerializeField] private List<ObjectReset> objectResets = new List<ObjectReset>();
     [SerializeField] private bool reset = false;
+
+    [HideInInspector] private bool canRespawnOnDestroy = true;
 
     private void FixedUpdate()
     {
@@ -19,6 +21,26 @@ public class ObjectResetManager : MonoBehaviour
             ResetObjects();
             reset = false;
         }
+    }
+
+    public void ObjectResetAdd(ObjectReset input)
+    {
+        objectResets.Add(input);
+    }
+
+    public void ObjectResetRemove(ObjectReset input)
+    {
+        objectResets.Remove(input);
+    }
+
+    public bool CanRespawn()
+    {
+        return canRespawnOnDestroy;
+    }
+
+    private void OnDestroy()
+    {
+        canRespawnOnDestroy = false;
     }
 
     public void ResetObjects()
