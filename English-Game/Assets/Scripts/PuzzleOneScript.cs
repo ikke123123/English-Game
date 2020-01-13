@@ -16,6 +16,7 @@ public class PuzzleOneScript : MonoBehaviour
 
     [Header("Data")]
     [SerializeField] private PictureSound pictureSound;
+    [SerializeField] private NopeSound nopeSounds;
 
     [Header("Feedback")]
     [SerializeField] private TextMeshPro textDisplay;
@@ -71,27 +72,7 @@ public class PuzzleOneScript : MonoBehaviour
 
     private void ApplyOrder(ObjectCard input)
     {
-        switch (currentCardNumber)
-        {
-            case 0:
-                if (Check(input, SemiRandomPictureAspect())) currentCardNumber = 1;
-                break;
-            case 1:
-                if (Check(input, SemiRandomPictureAspect())) currentCardNumber = 2;
-                break;
-            case 2:
-                if (Check(input, SemiRandomPictureAspect())) currentCardNumber = 3;
-                break;
-            case 3:
-                if (Check(input, SemiRandomPictureAspect())) currentCardNumber = 4;
-                break;
-            case 4:
-                if (Check(input, SemiRandomPictureAspect())) currentCardNumber = 5;
-                break;
-            case 5:
-                if (Check(input, SemiRandomPictureAspect())) currentCardNumber = 6;
-                break;
-        }
+        if (Check(input, SemiRandomPictureAspect())) currentCardNumber++;
     }
 
     private void Finished()
@@ -126,34 +107,61 @@ public class PuzzleOneScript : MonoBehaviour
         bool output = true;
         if (passedTags.Contains(tag)) output = false;
         else passedTags.Add(tag);
-        Soundcard soundcard = PictureTagToSoundcard(tag);
-        if (soundcard != null) soundcardPlayer.StartPlaying(soundcard);
+        Soundcard soundcard = ChooseANope(TagToTag(tag));
+        if (soundcard != null)
+        {
+            soundcard.playAfterThis = PictureTagToSoundcard(tag);
+            soundcard.timePlayAfterThis = 3;
+            soundcardPlayer.StartPlaying(soundcard);
+        }
         ApplyText(tag.ToString());
         return output;
+    }
+
+    private PictureAspect TagToTag(PictureTag input)
+    {
+        if (input > PictureTag.untagged && input <= PictureTag.forrest) return PictureAspect.locations;
+        if (input >= PictureTag.bird && input <= PictureTag.pug) return PictureAspect.attributes;
+        return PictureAspect.activities;
+    }
+
+    private Soundcard ChooseANope(PictureAspect tag)
+    {
+        switch (tag)
+        {
+            case PictureAspect.locations:
+                return nopeSounds.locations[Random.Range(0, nopeSounds.locations.Length)];
+            case PictureAspect.activities:
+                return nopeSounds.activities[Random.Range(0, nopeSounds.activities.Length)];
+            case PictureAspect.attributes:
+                return nopeSounds.attributes[Random.Range(0, nopeSounds.attributes.Length)];
+            default:
+                return null;
+        }
     }
 
     private Soundcard PictureTagToSoundcard(PictureTag tag)
     {
         switch (tag)
         {
-            case PictureTag.blue:
-                return pictureSound.blue;
-            case PictureTag.gray:
-                return pictureSound.gray;
-            case PictureTag.green:
-                return pictureSound.green;
-            case PictureTag.standard:
-                return pictureSound.standard;
-            case PictureTag.lighter:
-                return pictureSound.lighter;
-            case PictureTag.darker:
-                return pictureSound.darker;
-            case PictureTag.normal:
-                return pictureSound.normal;
-            case PictureTag.metallic:
-                return pictureSound.metallic;
-            case PictureTag.transparent:
-                return pictureSound.transparent;
+            case PictureTag.beach: 
+                return pictureSound.beach;
+            case PictureTag.field: 
+                return pictureSound.field;
+            case PictureTag.forrest: 
+                return pictureSound.forest;
+            case PictureTag.bird: 
+                return pictureSound.bird;
+            case PictureTag.cat: 
+                return pictureSound.cat;
+            case PictureTag.pug: 
+                return pictureSound.pug;
+            case PictureTag.lying: 
+                return pictureSound.lying;
+            case PictureTag.sitting: 
+                return pictureSound.sitting;
+            case PictureTag.standing: 
+                return pictureSound.standing;
             default:
                 return null;
         }
@@ -197,15 +205,23 @@ public class PuzzleOneScript : MonoBehaviour
 }
 
 [System.Serializable]
+public class NopeSound
+{
+    [SerializeField] public Soundcard[] locations;
+    [SerializeField] public Soundcard[] attributes;
+    [SerializeField] public Soundcard[] activities;
+}
+
+[System.Serializable]
 public class PictureSound
 {
-    [SerializeField] public Soundcard blue;
-    [SerializeField] public Soundcard gray;
-    [SerializeField] public Soundcard green;
-    [SerializeField] public Soundcard standard;
-    [SerializeField] public Soundcard lighter;
-    [SerializeField] public Soundcard darker;
-    [SerializeField] public Soundcard normal;
-    [SerializeField] public Soundcard metallic;
-    [SerializeField] public Soundcard transparent;
+    [SerializeField] public Soundcard beach;
+    [SerializeField] public Soundcard field;
+    [SerializeField] public Soundcard forest;
+    [SerializeField] public Soundcard bird;
+    [SerializeField] public Soundcard cat;
+    [SerializeField] public Soundcard pug;
+    [SerializeField] public Soundcard lying;
+    [SerializeField] public Soundcard sitting;
+    [SerializeField] public Soundcard standing;
 }

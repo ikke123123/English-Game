@@ -13,10 +13,10 @@ public class SoundcardPlayer : MonoBehaviour
     //Use this only for bigger objects that need
     //to play multiple sounds.
 
-    [HideInInspector] private List<Soundcard> playingAudioSources = new List<Soundcard>();
-    [HideInInspector] private List<Soundcard> rampOnAudioSources = new List<Soundcard>();
-    [HideInInspector] private List<Soundcard> rampOffAudioSources = new List<Soundcard>();
-    [HideInInspector] private List<Soundcard> pausedAudioSources = new List<Soundcard>();
+    [SerializeField] private List<Soundcard> playingAudioSources = new List<Soundcard>();
+    [SerializeField] private List<Soundcard> rampOnAudioSources = new List<Soundcard>();
+    [SerializeField] private List<Soundcard> rampOffAudioSources = new List<Soundcard>();
+    [SerializeField] private List<Soundcard> pausedAudioSources = new List<Soundcard>();
 
     private void FixedUpdate()
     {
@@ -41,11 +41,11 @@ public class SoundcardPlayer : MonoBehaviour
         rampOffAudioSources.Add(soundcard);
     }
 
-    public void StartPlaying(Soundcard soundcard)
+    public void StartPlaying(Soundcard soundcard, bool overrideCategory = false)
     {
         if (soundcard.state == State.off && soundcard.volume != 0)
         {
-            if (SoundCategory.CategoryStateOff(soundcard))
+            if (SoundCategory.CategoryStateOff(soundcard) || overrideCategory)
             {
                 AudioSource audio = gameObject.AddComponent<AudioSource>();
                 audio.clip = soundcard.clip;
@@ -57,6 +57,15 @@ public class SoundcardPlayer : MonoBehaviour
                 soundcard.state = State.rampOn;
                 rampOnAudioSources.Add(soundcard);
                 SoundCategory.SetCategoryStateOn(soundcard);
+                return;
+            }
+            foreach (Soundcard soundcard1 in playingAudioSources)
+            {
+                if (soundcard.category == soundcard1.category)
+                {
+                    soundcard1.playAfterThis = soundcard;
+                    soundcard1.timePlayAfterThis = -1;
+                }
             }
             Debug.Log("Couldn't start playing sound because of Catagory State being turned On.");
         }
@@ -177,23 +186,43 @@ public class SoundcardPlayer : MonoBehaviour
     private void RampOffFixedUpdate()
     {
         if (rampOffAudioSources.Count == 0) return;
+        List<Soundcard> destroySoundcards = new List<Soundcard>();
         foreach (Soundcard soundcard in rampOffAudioSources)
         {
-            if (soundcard.audioSource.volume - soundcard.rampOffStep < 0) DestroyAudioSource(soundcard);
+            if (soundcard.audioSource.volume + soundcard.rampOffStep <= 0) destroySoundcards.Add(soundcard);
             else soundcard.audioSource.volume += soundcard.rampOffStep;
+        }
+        foreach (Soundcard soundcard in destroySoundcards)
+        {
+            rampOffAudioSources.Remove(soundcard);
+            DestroyAudioSource(soundcard);
         }
     }
 
     private void PlayingFixedUpdate()
     {
         if (playingAudioSources.Count == 0) return;
+        List<Soundcard> rampOffSoundcards = new List<Soundcard>();
         foreach (Soundcard soundcard in playingAudioSources)
         {
-            if (soundcard.audioSource.isPlaying == false)
+            if (soundcard.audioSource == null || soundcard.audioSource.isPlaying == false)
             {
-                DestroyAudioSource(soundcard);
+                if (soundcard.playAfterThis != null)
+                {
+                    StartPlaying(soundcard.playAfterThis);
+                    soundcard.playAfterThis = null;
+                }
+                rampOffSoundcards.Add(soundcard);
+            } else if (soundcard.audioSource.time >= soundcard.timePlayAfterThis && soundcard.timePlayAfterThis != -1)
+            {
+                if (soundcard.playAfterThis != null)
+                {
+                    StartPlaying(soundcard.playAfterThis, true);
+                    soundcard.playAfterThis = null;
+                }
             }
         }
+        foreach (Soundcard soundcard in rampOffSoundcards) StopPlaying(soundcard);
     }
 
     private List<Soundcard> CombineSoundcardLists(List<Soundcard> list1, List<Soundcard> list2, List<Soundcard> list3)

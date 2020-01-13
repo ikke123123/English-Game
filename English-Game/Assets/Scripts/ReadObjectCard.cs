@@ -19,8 +19,8 @@ public class ReadObjectCard : MonoBehaviour
 
     [Header("Data")]
     [SerializeField, Tooltip("Action that will be taken upon a certain card entering/leaving. Can be left empty")] private ObjectCardAction[] cardAction;
-    [Header("Push to Function")]
-    [SerializeField, Tooltip("Pushes an Object card to a certain object. Can be left empty.")] private UnityEvent pushCard = null;
+    [Header("Puzzle One")]
+    [SerializeField, Tooltip("Pushes an Object card to the puzzle one object. Can be left empty.")] private PuzzleOneScript puzzleOneObject = null;
     [Header("Puzzle Two")]
     [SerializeField, Tooltip("Select purpose of object data reader. Can be left at unselected if not used.")] private CombinationComponent combinationComponent;
     [SerializeField, Tooltip("Script that decides what needs to happen with the object cards that are pushed, made for puzzle 2. Can be left empty.")] private Combination combinationObject = null;
@@ -50,7 +50,7 @@ public class ReadObjectCard : MonoBehaviour
                 ObjectCard objectCard = objectCard1.objectCard;
                 foreach (ObjectCardAction objectCardAction in cardAction) if (objectCardAction.card == objectCard) objectCardAction.onEnter.Invoke();
                 objectCards.Add(objectCard);
-                PushCard(objectCard);
+                PushCardToPuzzleOneObject(objectCard);
                 if (combinationComponent == CombinationComponent.read) PushCombination();
                 if (combinationComponent == CombinationComponent.write) PushCardAndObject(objectCard, collider.gameObject);
             }
@@ -86,10 +86,10 @@ public class ReadObjectCard : MonoBehaviour
         combinationObject.CatchEmptyComponent(gameObject, card);
     }
 
-    public void PushCard(ObjectCard card)
+    public void PushCardToPuzzleOneObject(ObjectCard card)
     {
-        if (pushCard == null) return;
-        pushCard.Invoke();
+        if (puzzleOneObject == null) return;
+        puzzleOneObject.PictureGiven(card);
     }
 
     private bool CombinationCheck()

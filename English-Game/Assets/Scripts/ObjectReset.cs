@@ -32,6 +32,7 @@ public class ObjectReset : MonoBehaviour
         {
             SpawnClone();
         }
+
         resetManager = GameObject.FindGameObjectWithTag("Data Object").GetComponent<ObjectResetManager>();
         resetManager.ObjectResetAdd(this);
 

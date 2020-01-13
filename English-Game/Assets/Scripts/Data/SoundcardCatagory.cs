@@ -45,7 +45,7 @@ public class SoundCategory : ScriptableObject
         }
     }
 
-    public static void AddSoundcardToCatagory(Soundcard soundcard)
+    public static void AddSoundcardToCategory(Soundcard soundcard)
     {
         if (soundcard.category != null)
         {

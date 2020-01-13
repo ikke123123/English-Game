@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum PictureTag { untagged, blue, gray, green, standard, lighter, darker, normal, metallic, transparent };
+public enum PictureTag { untagged, beach, field, forrest, bird, cat, pug, lying, sitting, standing };
 
 [CreateAssetMenu(fileName = "New Object Card", menuName = "Custom/Object Card")]
 public class ObjectCard : ScriptableObject
@@ -29,9 +29,14 @@ public class ObjectCard : ScriptableObject
         //Checks if the PictureTags are viable
         if (location != PictureTag.untagged)
         {
-            if (!(location > PictureTag.untagged && location <= PictureTag.green)) Debug.LogWarning("Location is not correct.");
-            if (!(attribute >= PictureTag.standard && attribute <= PictureTag.darker)) Debug.LogWarning("Attribute is not correct.");
-            if (!(activity >= PictureTag.normal && activity <= PictureTag.transparent)) Debug.LogWarning("Activity is not correct.");
+            if (!(location > PictureTag.untagged && location <= PictureTag.forrest)) LogWarning("Location");
+            if (!(attribute >= PictureTag.bird && attribute <= PictureTag.pug)) LogWarning("Attribute");
+            if (!(activity >= PictureTag.lying && activity <= PictureTag.standing)) LogWarning("Activity");
         }
+    }
+
+    private void LogWarning(string what)
+    {
+        Debug.LogWarning(what + " is not correct. " + location + " " + attribute + " " + activity);
     }
 }

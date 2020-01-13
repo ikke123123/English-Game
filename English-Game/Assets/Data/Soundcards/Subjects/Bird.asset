@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04061d4280ebb6045a7cee23e7197f11, type: 3}
+  m_Name: Bird
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 80a37c623168fd04f8b7a4a1cd4f3dda, type: 3}
+  volume: 1
+  rampOffStep: -1
+  rampOnStep: 1
+  loop: 0
+  playAfterThis: {fileID: 0}
+  timePlayAfterThis: 3
+  category: {fileID: 11400000, guid: ba54329e9a428e04590d7b159b16debc, type: 2}
+  audioSource: {fileID: 0}
+  state: 0
+  paused: 0

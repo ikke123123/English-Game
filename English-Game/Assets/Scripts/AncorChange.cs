@@ -32,6 +32,4 @@ public class AncorChange : MonoBehaviour
         transform.position = pos;
         gameObject.transform.Translate(new Vector3(0, 0, 0));
     }
-
-
 }

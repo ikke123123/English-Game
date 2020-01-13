@@ -10,7 +10,7 @@ public class ColorChanger : MonoBehaviour
     //This script can change the color of the
     //liquid within the bottle.
     //------------------------------------------
-    //Last Modification Time: 15:15 09/01/2020
+    //Last Modification Time: 00:46 13/01/2020
 
     [Header("Properties")]
     [SerializeField, Range(0.1f, 0.9f)] private float alpha = 0.6f;
