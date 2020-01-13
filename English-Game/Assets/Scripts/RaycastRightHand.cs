@@ -32,7 +32,7 @@ public class RaycastRightHand : MonoBehaviour
         if (Physics.Raycast(transform.position, handPointing, out hit, Mathf.Infinity, layerMaskFloor))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
-            if (Vector3.Distance(hit.point, transform.position) > 6)
+            if (Vector3.Distance(hit.point, transform.position) > teleportIndicatorRangeCutoff)
             {
                 hitObject.SetActive(true);
                 hitObject.transform.position = hit.point;
@@ -40,7 +40,7 @@ public class RaycastRightHand : MonoBehaviour
 
             hit.collider.gameObject.GetComponent<ChangeColor>().isHit();
             lastHitFloor = hit.collider.gameObject.GetComponent<ChangeColor>();
-            Debug.Log("hey");
+            //Debug.Log("hey");
         }
         else
         {

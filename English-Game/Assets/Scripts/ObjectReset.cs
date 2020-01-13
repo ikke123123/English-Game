@@ -33,8 +33,12 @@ public class ObjectReset : MonoBehaviour
             SpawnClone();
         }
 
-        resetManager = GameObject.FindGameObjectWithTag("Data Object").GetComponent<ObjectResetManager>();
-        resetManager.ObjectResetAdd(this);
+        if (GameObject.FindGameObjectWithTag("Data Object") && GameObject.FindGameObjectWithTag("Data Object"))
+        {
+            resetManager = GameObject.FindGameObjectWithTag("Data Object").GetComponent<ObjectResetManager>();
+            resetManager.ObjectResetAdd(this);
+        }
+        else Debug.LogWarning("Please add Reset Manager");
 
         startPos = transform.position;
         if (startPos.y < minHeight && respawnUpdate)

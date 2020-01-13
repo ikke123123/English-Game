@@ -58,7 +58,7 @@ public class ChangeColor : MonoBehaviour
                 //positionObject.SetActive(true);
 
                 //positionObject.transform.position = newPos;
-                //rayOver = false;
+                rayOver = false;
             }
             else
             {
