@@ -44,7 +44,6 @@ public class OVRGrabbable : MonoBehaviour
     public void isHit()
     {
         rayOver = true;
-        Debug.Log("true");
     }
     //little timer
     private float timer = 0;

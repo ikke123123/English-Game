@@ -10,6 +10,11 @@ public class CodeLibrary : MonoBehaviour
     //------------------------------------------
     //All kinds of useful, and less useful code things
 
+    public static Vector3 MaxVector3Size()
+    {
+        return new Vector3 { x = 10000, y = 10000, z = 10000 };
+    }
+
     public static void RemoveParents(Transform transformInput)
     {
         foreach (Transform transform in transformInput)
@@ -17,6 +22,33 @@ public class CodeLibrary : MonoBehaviour
             RemoveParents(transform);
             transform.parent = null;
         }
+    }
+
+    public static Vector3 ScaleVector3Sum(Vector3 input, float sum)
+    {
+        Vector3 output;
+        output.x = input.x + sum;
+        output.y = input.y + sum;
+        output.z = input.z + sum;
+        return output;
+    }
+
+    public static Vector3 ScaleVector3Modifier(Vector3 input, float modifier)
+    {
+        Vector3 output;
+        output.x = input.x * modifier;
+        output.y = input.y * modifier;
+        output.z = input.z * modifier;
+        return output;
+    }
+
+    public static Vector3 ClampVector3(Vector3 input, Vector3 min, Vector3 max)
+    {
+        Vector3 output;
+        output.x = Mathf.Clamp(input.x, min.x, max.x);
+        output.y = Mathf.Clamp(input.y, min.y, max.y);
+        output.z = Mathf.Clamp(input.z, min.z, max.z);
+        return output;
     }
 
     /// <summary>

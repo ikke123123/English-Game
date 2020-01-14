@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: 604664423767047374}
   - component: {fileID: 8921244045655784205}
   - component: {fileID: 6193810242468721504}
+  - component: {fileID: 2445873999886918814}
   m_Layer: 9
   m_Name: Green
-  m_TagString: Untagged
+  m_TagString: Shrinkable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnUpdate: 1
-  respawnOnDestroy: 1
   minHeight: -5
 --- !u!54 &604664423767047374
 Rigidbody:
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee6329c571043c40a96d873914322ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectCard: {fileID: 0}
+  objectCard: {fileID: 11400000, guid: 53b087e716aaf8b41a1b3374fe24324c, type: 2}
 --- !u!114 &6193810242468721504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,3 +157,15 @@ MonoBehaviour:
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
   effect: {fileID: 0}
+--- !u!114 &2445873999886918814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604664423767047367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434b8a7bcf36ae248ae80d14d08fb2ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

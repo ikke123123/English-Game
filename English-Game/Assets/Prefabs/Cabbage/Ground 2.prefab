@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4349225081555296715}
   - component: {fileID: 5551793030232988994}
   m_Layer: 12
-  m_Name: Plane 1
+  m_Name: Ground 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,8 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f22d5565ef447634d8a9c612b79d498f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startColor: {r: 0.14978641, g: 0.9622642, b: 0.2921269, a: 0}
-  hoverColor: {r: 0.9245283, g: 0.8536361, b: 0, a: 0}
+  startColor: {r: 1, g: 1, b: 1, a: 0}
+  hoverColor: {r: 0.6650944, g: 0.87883264, b: 1, a: 0}
   anchor: {fileID: 0}
   player: {fileID: 0}
   ancor: {fileID: 0}

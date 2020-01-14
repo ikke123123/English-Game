@@ -25,11 +25,11 @@ public class ReadObjectCard : MonoBehaviour
     [SerializeField, Tooltip("Select purpose of object data reader. Can be left at unselected if not used.")] private CombinationComponent combinationComponent;
     [SerializeField, Tooltip("Script that decides what needs to happen with the object cards that are pushed, made for puzzle 2. Can be left empty.")] private Combination combinationObject = null;
     [SerializeField, Tooltip("All possible combinations (leave out the alternative possible). Put only on the read object/Collider")] private Combinations[] possibleCombinations;
-    //Remove later
-    [SerializeField] Combinations combination;
 
-    [HideInInspector] private List<ObjectCard> objectCards = new List<ObjectCard>();
-    [HideInInspector] private List<GameObject> gameObjects = new List<GameObject>();
+
+    [SerializeField] private Combinations combination;
+    [SerializeField] private List<ObjectCard> objectCards = new List<ObjectCard>();
+    [SerializeField] private List<GameObject> gameObjects = new List<GameObject>();
 
     private void Awake()
     {
@@ -68,7 +68,7 @@ public class ReadObjectCard : MonoBehaviour
                 foreach (ObjectCardAction objectCardAction in cardAction) if (objectCardAction.card == objectCard) objectCardAction.onLeave.Invoke();
                 objectCards.Remove(objectCard);
                 if (combinationComponent == CombinationComponent.read) PushCombination();
-                if (combinationComponent == CombinationComponent.write) PushCardAndObject(objectCard, collider.gameObject);
+                if (combinationComponent == CombinationComponent.write) PushCardAndObject(null, null);
             }
         }
     }
@@ -77,7 +77,8 @@ public class ReadObjectCard : MonoBehaviour
     {
         if (combinationObject == null) return;
 
-        if (CombinationCheck()) combinationObject.CatchPossibleCombinations(gameObjects.ToArray(), combination);
+        CombinationCheck();
+        combinationObject.CatchPossibleCombinations(gameObjects.ToArray(), combination);
     }
 
     public void PushCardAndObject(ObjectCard card, GameObject gameObject)
@@ -114,6 +115,13 @@ public class ReadObjectCard : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void ClearOnCombine()
+    {
+        combination = null;
+        objectCards.Clear();
+        gameObjects.Clear();
     }
 }
 

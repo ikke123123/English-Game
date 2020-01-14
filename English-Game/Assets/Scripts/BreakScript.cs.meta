@@ -9,6 +9,10 @@ MonoImporter:
   - liquid: {instanceID: 0}
   - replacementObject: {fileID: 8105522476617803581, guid: 3f61b094da6e4d14dbd32d0c3a687453,
       type: 3}
+  - emptyGlassBreak: {fileID: 11400000, guid: 7b55c9ca660a5674ea24eba5ab53be14, type: 2}
+  - fullGlassBreak: {fileID: 11400000, guid: 9d7a1bb39bdab8c4d9ca2d9086d6c6f5, type: 2}
+  - simpleSoundCardPlayer: {fileID: 5059980783895036102, guid: f18ffbf3988cd0c4aa619ec194f5be65,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

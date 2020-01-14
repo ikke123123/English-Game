@@ -41,6 +41,36 @@ public class SoundcardPlayer : MonoBehaviour
         rampOffAudioSources.Add(soundcard);
     }
 
+    public void StartPlaying1(Soundcard soundcard)
+    {
+        if (soundcard.state == State.off && soundcard.volume != 0)
+        {
+            if (SoundCategory.CategoryStateOff(soundcard))
+            {
+                AudioSource audio = gameObject.AddComponent<AudioSource>();
+                audio.clip = soundcard.clip;
+                audio.loop = soundcard.loop;
+                audio.volume = 0;
+                audio.spatialBlend = 1;
+                audio.Play();
+                soundcard.audioSource = audio;
+                soundcard.state = State.rampOn;
+                rampOnAudioSources.Add(soundcard);
+                SoundCategory.SetCategoryStateOn(soundcard);
+                return;
+            }
+            foreach (Soundcard soundcard1 in playingAudioSources)
+            {
+                if (soundcard.category == soundcard1.category)
+                {
+                    soundcard1.playAfterThis = soundcard;
+                    soundcard1.timePlayAfterThis = -1;
+                }
+            }
+            Debug.Log("Couldn't start playing sound because of Catagory State being turned On.");
+        }
+    }
+
     public void StartPlaying(Soundcard soundcard, bool overrideCategory = false)
     {
         if (soundcard.state == State.off && soundcard.volume != 0)

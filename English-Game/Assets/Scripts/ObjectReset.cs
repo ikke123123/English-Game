@@ -17,10 +17,10 @@ public class ObjectReset : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField, Tooltip("Object should respawn whenever it gets below the Minimal Height.")] private bool respawnUpdate = false;
-    [SerializeField, Tooltip("Object should respawn whenever it gets destroyed.")] private bool respawnOnDestroy = false;
+    //[SerializeField, Tooltip("Object should respawn whenever it gets destroyed.")] private bool respawnOnDestroy = false;
     [SerializeField] private float minHeight = -5;
 
-    [HideInInspector] private GameObject clone;
+    //[HideInInspector] private GameObject clone;
     [HideInInspector] private ObjectResetManager resetManager;
     [HideInInspector] private Vector3 startPos;
     [HideInInspector] private Quaternion startRotation;
@@ -28,10 +28,10 @@ public class ObjectReset : MonoBehaviour
 
     private void OnEnable()
     {
-        if (respawnOnDestroy == true)
-        {
-            SpawnClone();
-        }
+        //if (respawnOnDestroy == true)
+        //{
+        //    SpawnClone();
+        //}
 
         if (GameObject.FindGameObjectWithTag("Data Object") && GameObject.FindGameObjectWithTag("Data Object"))
         {
@@ -57,23 +57,23 @@ public class ObjectReset : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        if (disable == false && respawnOnDestroy && resetManager.canRespawnOnDestroy)
-        {
-            clone.GetComponent<ObjectReset>().respawnOnDestroy = true;       
-            clone.SetActive(true);
-            resetManager.ObjectResetRemove(this);
-        }
-    }
+    //private void OnDestroy()
+    //{
+    //    if (disable == false && respawnOnDestroy && resetManager.canRespawnOnDestroy)
+    //    {
+    //        clone.GetComponent<ObjectReset>().respawnOnDestroy = true;       
+    //        clone.SetActive(true);
+    //        resetManager.ObjectResetRemove(this);
+    //    }
+    //}
 
-    public void SpawnClone()
-    {
-        respawnOnDestroy = false;
-        clone = Instantiate(gameObject, transform.position, transform.rotation);
-        clone.SetActive(false);
-        respawnOnDestroy = true;
-    }
+    //public void SpawnClone()
+    //{
+    //    respawnOnDestroy = false;
+    //    clone = Instantiate(gameObject, transform.position, transform.rotation);
+    //    clone.SetActive(false);
+    //    respawnOnDestroy = true;
+    //}
 
     public void ResetPosition()
     {

@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 8479129542005847448}
   - component: {fileID: 8927186796874169182}
   - component: {fileID: 1764342228601950490}
+  - component: {fileID: 3194640032301267501}
   m_Layer: 9
   m_Name: Empty Bottle
-  m_TagString: Untagged
+  m_TagString: TriggerBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,6 +85,10 @@ MonoBehaviour:
   liquid: {fileID: 0}
   replacementObject: {fileID: 8105522476617803581, guid: 3f61b094da6e4d14dbd32d0c3a687453,
     type: 3}
+  emptyGlassBreak: {fileID: 11400000, guid: 7b55c9ca660a5674ea24eba5ab53be14, type: 2}
+  fullGlassBreak: {fileID: 11400000, guid: 9d7a1bb39bdab8c4d9ca2d9086d6c6f5, type: 2}
+  simpleSoundCardPlayer: {fileID: 5059980783895036102, guid: f18ffbf3988cd0c4aa619ec194f5be65,
+    type: 3}
 --- !u!114 &8927186796874169182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +120,20 @@ MonoBehaviour:
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
   effect: {fileID: 0}
+--- !u!114 &3194640032301267501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7468260623322021749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11a358c56d326644299941bf7d619a52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnUpdate: 1
+  minHeight: -5
 --- !u!1001 &360061281121617053
 PrefabInstance:
   m_ObjectHideFlags: 0

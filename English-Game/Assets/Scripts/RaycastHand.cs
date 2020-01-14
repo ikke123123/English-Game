@@ -24,7 +24,7 @@ public class RaycastHand : MonoBehaviour
         if (Physics.Raycast(transform.position, handPointing, out hit, 3, layerMaskGrab))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.green);
-            hit.collider.gameObject.GetComponent<OVRGrabbable>().isHit();
+            if (hit.collider.gameObject.GetComponent<OVRGrabbable>()) hit.collider.gameObject.GetComponent<OVRGrabbable>().isHit();
         }
         else
         {

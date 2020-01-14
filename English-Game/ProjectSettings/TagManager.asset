@@ -8,6 +8,8 @@ TagManager:
   - GrabbableObject
   - TriggerBox
   - Data Object
+  - Shrinkable
+  - Shrinker
   layers:
   - Default
   - TransparentFX

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 135040911875635442}
   m_Layer: 9
   m_Name: Full Bottle
-  m_TagString: Untagged
+  m_TagString: TriggerBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,6 +85,10 @@ MonoBehaviour:
   effect: {fileID: 7353583290451542101, guid: 0d5343e517f651a4db7920f0dab82218, type: 3}
   liquid: {fileID: 570455141829098599}
   replacementObject: {fileID: 8105522476617803581, guid: 3f61b094da6e4d14dbd32d0c3a687453,
+    type: 3}
+  emptyGlassBreak: {fileID: 11400000, guid: 7b55c9ca660a5674ea24eba5ab53be14, type: 2}
+  fullGlassBreak: {fileID: 11400000, guid: 9d7a1bb39bdab8c4d9ca2d9086d6c6f5, type: 2}
+  simpleSoundCardPlayer: {fileID: 5059980783895036102, guid: f18ffbf3988cd0c4aa619ec194f5be65,
     type: 3}
 --- !u!114 &3628002511031185889
 MonoBehaviour:

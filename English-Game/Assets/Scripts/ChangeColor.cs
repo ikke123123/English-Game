@@ -48,7 +48,6 @@ public class ChangeColor : MonoBehaviour
             //Just makes sure that the color changes if it is hit with the raycast. 
             if (rayOver == true)
             {
-                Debug.Log("RayOver");
                 GetComponent<Renderer>().material.SetColor("_Color", hoverColor);
                 newPos.x = /*ancor.difference.x +*/ transform.position.x ;
                 newPos.z = /*ancor.difference.z +*/ transform.position.z;

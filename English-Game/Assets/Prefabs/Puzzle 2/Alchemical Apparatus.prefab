@@ -1,0 +1,255 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5495849288211596701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6735935595214815716}
+  - component: {fileID: 3898727169859209556}
+  - component: {fileID: 8523323176632921752}
+  m_Layer: 0
+  m_Name: Write
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6735935595214815716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5495849288211596701}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: 0.000034, y: 0.00251, z: 0.00247}
+  m_LocalScale: {x: 0.01, y: 0.009999998, z: 0.009999998}
+  m_Children: []
+  m_Father: {fileID: 6875116430578711118}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &3898727169859209556
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5495849288211596701}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 0.25
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8523323176632921752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5495849288211596701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba0dd53d8f8e73e4a851a671bc5a8efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardAction: []
+  puzzleOneObject: {fileID: 0}
+  combinationComponent: 2
+  combinationObject: {fileID: 4866760211173543305}
+  possibleCombinations: []
+  combination: {fileID: 0}
+  objectCards: []
+  gameObjects: []
+--- !u!1 &6835878614307765075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9022118348459998620}
+  - component: {fileID: 6986976199227300621}
+  - component: {fileID: 6355916358299069828}
+  m_Layer: 0
+  m_Name: Read
+  m_TagString: Shrinker
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9022118348459998620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6835878614307765075}
+  m_LocalRotation: {x: 0.67049134, y: 0, z: 0, w: 0.74191743}
+  m_LocalPosition: {x: -0.000019, y: -0.002387, z: 0.003067}
+  m_LocalScale: {x: 0.01, y: 0.009999998, z: 0.009999998}
+  m_Children: []
+  m_Father: {fileID: 6875116430578711118}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 84.21, y: 0, z: 0}
+--- !u!65 &6986976199227300621
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6835878614307765075}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.12524796, y: 0.1, z: 0.25254366}
+  m_Center: {x: -0.00063705444, y: 1.7787978e-10, z: 0.0012718143}
+--- !u!114 &6355916358299069828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6835878614307765075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba0dd53d8f8e73e4a851a671bc5a8efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardAction: []
+  puzzleOneObject: {fileID: 0}
+  combinationComponent: 1
+  combinationObject: {fileID: 4866760211173543305}
+  possibleCombinations:
+  - {fileID: 11400000, guid: 5ba5d47406ce4e546a96e34da8e536c6, type: 2}
+  combination: {fileID: 0}
+  objectCards: []
+  gameObjects: []
+--- !u!1 &7580130122209855581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6875116430578711118}
+  - component: {fileID: 2464127915774132344}
+  - component: {fileID: 8146693021625007233}
+  - component: {fileID: 819059922539671618}
+  - component: {fileID: 4866760211173543305}
+  m_Layer: 0
+  m_Name: Alchemical Apparatus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6875116430578711118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7580130122209855581}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: -3.909, y: 0.74743074, z: -0.25695726}
+  m_LocalScale: {x: 150, y: 150, z: 150}
+  m_Children:
+  - {fileID: 9022118348459998620}
+  - {fileID: 6735935595214815716}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &2464127915774132344
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7580130122209855581}
+  m_Mesh: {fileID: 2534964839176971238, guid: 7cc8f487008ed0049b0e5981b93c108c, type: 3}
+--- !u!23 &8146693021625007233
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7580130122209855581}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 16b52e6b8fe0cd74f83b3fa286300d73, type: 2}
+  - {fileID: 2100000, guid: 9f4a7af72f031734883cbc9dd0366bd9, type: 2}
+  - {fileID: 2100000, guid: 99463163349934c4e9379a71fe826247, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!64 &819059922539671618
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7580130122209855581}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 2534964839176971238, guid: 7cc8f487008ed0049b0e5981b93c108c, type: 3}
+--- !u!114 &4866760211173543305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7580130122209855581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da44331292524f74190447175bee4f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emptyComponent: {fileID: 11400000, guid: ded955655f581a84a99fc5dac27c59b1, type: 2}
+  fullComponent: {fileID: 11400000, guid: 19e386de4146cbd42b899a54958658c9, type: 2}
+  alternativeComponent: {fileID: 11400000, guid: e043cc86ce6687747b1f331377e29b74,
+    type: 2}
+  clearOnCombine:
+  - {fileID: 6355916358299069828}
+  - {fileID: 8523323176632921752}
+  canCombine: 0
+  possibleCombination: {fileID: 0}
+  gameObjectsInCombination: []
+  emptyComponentGameObject: {fileID: 0}
+  receivedComponent: {fileID: 0}

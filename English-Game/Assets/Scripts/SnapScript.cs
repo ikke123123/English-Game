@@ -25,7 +25,6 @@ public class SnapScript: MonoBehaviour
     {
         height = GetComponent<Renderer>().bounds.extents.y;
         extents = GetComponent<Renderer>().bounds.extents;
-
     }
 
     // Update is called once per frame
@@ -93,8 +92,6 @@ public class SnapScript: MonoBehaviour
             //Debug.Log(rotationXYZ);
             inBox = true;
         }
-
-
     }
     private void OnTriggerExit(Collider other)
     {
