@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EmptyBottleBreak
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 45918d0e02253bd4d815b8bad49ded59, type: 3}
-  volume: 1
+  volume: 0.5
   rampOffStep: -1
   rampOnStep: 1
   loop: 0

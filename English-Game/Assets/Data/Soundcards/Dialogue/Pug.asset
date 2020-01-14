@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04061d4280ebb6045a7cee23e7197f11, type: 3}
   m_Name: Pug
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 8f02c0a707e4c2f4ca7787062059cdf5, type: 3}
+  clip: {fileID: 8300000, guid: 0c566738ea5afaf4ead0528403b2d7ac, type: 3}
   volume: 1
   rampOffStep: -1
   rampOnStep: 1

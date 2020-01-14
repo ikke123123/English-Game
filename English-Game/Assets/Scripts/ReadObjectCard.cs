@@ -26,7 +26,7 @@ public class ReadObjectCard : MonoBehaviour
     [SerializeField, Tooltip("Script that decides what needs to happen with the object cards that are pushed, made for puzzle 2. Can be left empty.")] private Combination combinationObject = null;
     [SerializeField, Tooltip("All possible combinations (leave out the alternative possible). Put only on the read object/Collider")] private Combinations[] possibleCombinations;
 
-
+    [Header("Debug")]
     [SerializeField] private Combinations combination;
     [SerializeField] private List<ObjectCard> objectCards = new List<ObjectCard>();
     [SerializeField] private List<GameObject> gameObjects = new List<GameObject>();

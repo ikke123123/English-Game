@@ -13,6 +13,7 @@ public class SoundcardPlayer : MonoBehaviour
     //Use this only for bigger objects that need
     //to play multiple sounds.
 
+    [Header("Debug")]
     [SerializeField] private List<Soundcard> playingAudioSources = new List<Soundcard>();
     [SerializeField] private List<Soundcard> rampOnAudioSources = new List<Soundcard>();
     [SerializeField] private List<Soundcard> rampOffAudioSources = new List<Soundcard>();

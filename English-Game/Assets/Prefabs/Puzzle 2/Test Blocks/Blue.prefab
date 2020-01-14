@@ -171,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loudThunkSettings:
   - objectType: 0
-    minimumVelocity: 0
+    minimumVelocity: 0.5
     maximumVelocity: 2
     toPlay: {fileID: 0}
   - objectType: 1

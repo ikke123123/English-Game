@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04061d4280ebb6045a7cee23e7197f11, type: 3}
   m_Name: Cat
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: c435d635ea796734ea67ad1365952e95, type: 3}
+  clip: {fileID: 8300000, guid: 6351cacd2550938458ba7bca6446b741, type: 3}
   volume: 1
   rampOffStep: -1
   rampOnStep: 1

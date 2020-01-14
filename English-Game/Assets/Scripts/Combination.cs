@@ -12,11 +12,13 @@ public class Combination : MonoBehaviour
     //------------------------------------------
     //Last Modification Time: 12:44 08/01/2020
 
+    [Header("Settings")]
     [SerializeField, Tooltip("The empty component that's required for the combination, for instance the empty bottle.")] private ObjectCard emptyComponent;
     [SerializeField, Tooltip("The resulting component, for instance the full bottle.")] private ObjectCard fullComponent;
     [SerializeField, Tooltip("If the game doesn't receive a correct combination object, it will create this instead.")] private Combinations alternativeComponent;
     [SerializeField] private ReadObjectCard[] clearOnCombine;
 
+    [Header("Debug")]
     [SerializeField] private bool canCombine = false;
     [SerializeField] private Combinations possibleCombination;
     [SerializeField] private GameObject[] gameObjectsInCombination;

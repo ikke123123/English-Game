@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loudThunkSettings:
   - objectType: 2
-    minimumVelocity: 0
+    minimumVelocity: 0.5
     maximumVelocity: 3
     toPlay: {fileID: 0}
   blockSoft: {fileID: 11400000, guid: 7830a96d0d70d964084bc0c6090af390, type: 2}

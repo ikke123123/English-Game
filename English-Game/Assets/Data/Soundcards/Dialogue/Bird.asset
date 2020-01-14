@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04061d4280ebb6045a7cee23e7197f11, type: 3}
   m_Name: Bird
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 80a37c623168fd04f8b7a4a1cd4f3dda, type: 3}
+  clip: {fileID: 8300000, guid: da49c4adfa2865b4ba1a1fdc612d2fac, type: 3}
   volume: 1
   rampOffStep: -1
   rampOnStep: 1
