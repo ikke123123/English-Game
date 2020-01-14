@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9198885514983176666}
   - component: {fileID: 3637663956685080186}
   - component: {fileID: 4290461448410411951}
+  - component: {fileID: 2789385540433615684}
   m_Layer: 9
   m_Name: Pug
   m_TagString: Untagged
@@ -80,7 +81,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnUpdate: 1
-  respawnOnDestroy: 0
   minHeight: -5
 --- !u!114 &9198885514983176666
 MonoBehaviour:
@@ -127,6 +127,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: a9c3417c2622cfb4782caf2c28839a71, type: 2}
   toSetTo: {fileID: 4241107786852906639}
+--- !u!114 &2789385540433615684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6354039837792920785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434b8a7bcf36ae248ae80d14d08fb2ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loudThunkSettings:
+  - objectType: 0
+    minimumVelocity: 0.5
+    maximumVelocity: 2
+    toPlay: {fileID: 0}
+  - objectType: 1
+    minimumVelocity: 2
+    maximumVelocity: -1
+    toPlay: {fileID: 0}
+  blockSoft: {fileID: 11400000, guid: 7830a96d0d70d964084bc0c6090af390, type: 2}
+  blockHard: {fileID: 11400000, guid: 21897739e3a09ae4e9cb462c021db7a9, type: 2}
+  bottle: {fileID: 11400000, guid: e1b3a04a1d569684a901fd40606f791d, type: 2}
+  simpleSoundCardPlayer: {fileID: 5059980783895036102, guid: f18ffbf3988cd0c4aa619ec194f5be65,
+    type: 3}
 --- !u!1001 &6863529364339814735
 PrefabInstance:
   m_ObjectHideFlags: 0

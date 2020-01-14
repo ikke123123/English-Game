@@ -23,10 +23,11 @@ public class PlayerData : MonoBehaviour
 
     [Header("Playerdata")]
     [SerializeField] private bool noSave;
-
     [SerializeField] private string playerName;
+
+    [Header("Debug")]
     [SerializeField] private int currentMilestoneID;
-    [HideInInspector] public Milestones currentMilestone;
+    [SerializeField] public Milestones currentMilestone;
 
     private void Awake()
     {
@@ -116,6 +117,7 @@ public class PlayerData : MonoBehaviour
 public class Milestones
 {
     [SerializeField] public string milestoneName;
+    [TextArea]
     [SerializeField] public string goalDescription;
     [SerializeField] public UnityEvent toDoWhenStarted;
     [SerializeField] public UnityEvent toDoWhenCompleted;

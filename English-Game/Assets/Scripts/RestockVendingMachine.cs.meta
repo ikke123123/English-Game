@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c897da348280c174787fd7b58c2db19a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - card: {fileID: 11400000, guid: ded955655f581a84a99fc5dac27c59b1, type: 2}
+  - restockSound: {fileID: 11400000, guid: f1ea885c382f6c54ba653931356207f8, type: 2}
+  - simpleSoundCardPlayer: {fileID: 5059980783895036102, guid: f18ffbf3988cd0c4aa619ec194f5be65,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

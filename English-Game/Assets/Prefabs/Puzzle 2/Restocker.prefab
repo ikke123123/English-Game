@@ -43,4 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d74572d113d3d46b2818f2ff0f9536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnTimer: 5
+  card: {fileID: 11400000, guid: ded955655f581a84a99fc5dac27c59b1, type: 2}

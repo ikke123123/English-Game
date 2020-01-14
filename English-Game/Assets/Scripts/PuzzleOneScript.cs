@@ -17,6 +17,7 @@ public class PuzzleOneScript : MonoBehaviour
     [Header("Data")]
     [SerializeField] private PictureSound pictureSound;
     [SerializeField] private NopeSound nopeSounds;
+    [SerializeField] private Soundcard beginDialogue;
 
     [Header("Feedback")]
     [SerializeField] private TextMeshPro textDisplay;
@@ -27,7 +28,7 @@ public class PuzzleOneScript : MonoBehaviour
 
     [Header("Puzzle Settings")]
     [SerializeField, Tooltip("Measured from the last card, which card should be the right one."), Range(0, 5)] private int cardAnswer = 0;
-    [SerializeField, Tooltip("This bool is activated when the puzzle is finished, this bool is only here for debugging.")] private bool disablePuzzle = false;
+    [SerializeField, Tooltip("This bool is activated when the puzzle is finished, this bool is only here for debugging.")] private bool disablePuzzle = true;
     [SerializeField] private string textAfterCompletion = "";
 
     //Hidden from inspector
@@ -36,6 +37,12 @@ public class PuzzleOneScript : MonoBehaviour
     [HideInInspector] private int activityCount = 2;
     [HideInInspector] private int locationCount = 2;
     [HideInInspector] private int attributeCount = 2;
+
+    public void StartPuzzle()
+    {
+        disablePuzzle = false;
+        if (beginDialogue != null) soundcardPlayer.StartPlaying(beginDialogue);
+    }
 
     public void PictureGiven(ObjectCard input)
     {
