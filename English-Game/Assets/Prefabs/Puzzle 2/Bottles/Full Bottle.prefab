@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3628002511031185889}
   - component: {fileID: 1841933926554054489}
   - component: {fileID: 135040911875635442}
+  - component: {fileID: 5570254163012167587}
   m_Layer: 9
   m_Name: Full Bottle
   m_TagString: TriggerBox
@@ -150,6 +151,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectCard: {fileID: 11400000, guid: 19e386de4146cbd42b899a54958658c9, type: 2}
+--- !u!114 &5570254163012167587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6222003302556858284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434b8a7bcf36ae248ae80d14d08fb2ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loudThunkSettings:
+  - objectType: 2
+    minimumVelocity: 0
+    maximumVelocity: 3
+    toPlay: {fileID: 0}
+  blockSoft: {fileID: 11400000, guid: 7830a96d0d70d964084bc0c6090af390, type: 2}
+  blockHard: {fileID: 11400000, guid: 21897739e3a09ae4e9cb462c021db7a9, type: 2}
+  bottle: {fileID: 11400000, guid: e1b3a04a1d569684a901fd40606f791d, type: 2}
+  simpleSoundCardPlayer: {fileID: 5059980783895036102, guid: f18ffbf3988cd0c4aa619ec194f5be65,
+    type: 3}
 --- !u!1001 &1148349079325444305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -307,11 +330,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1474321329374241650}
     m_Modifications:
-    - target: {fileID: 5043424830268397628, guid: 09de9dc4108975d40b48e229de745a18,
-        type: 3}
-      propertyPath: m_Name
-      value: Liquid
-      objectReference: {fileID: 0}
     - target: {fileID: 8333491035202038319, guid: 09de9dc4108975d40b48e229de745a18,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -366,6 +384,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043424830268397628, guid: 09de9dc4108975d40b48e229de745a18,
+        type: 3}
+      propertyPath: m_Name
+      value: Liquid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09de9dc4108975d40b48e229de745a18, type: 3}

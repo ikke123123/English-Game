@@ -2,43 +2,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ObjectThunkType { blockSoft, blockHard, bottle };
+
 public class LoudThunk : MonoBehaviour
 {
-    private enum ObjectType { blockSoft, blockHard, bottle };
-
-    [Header("Set type")]
-    [SerializeField] private ObjectType objectType;
-    [SerializeField, Range(0, 5)] private float minimumVelocity = 1;
-    [Header("Don't touch")]
+    [Header("Set Type")]
+    [SerializeField] private LoudThunkSetting[] loudThunkSettings;
+    [Header("Don't Touch")]
     [SerializeField] private Soundcard blockSoft;
     [SerializeField] private Soundcard blockHard;
     [SerializeField] private Soundcard bottle;
     [SerializeField] private GameObject simpleSoundCardPlayer;
 
-    private Soundcard toPlay = null;
-
     private void OnEnable()
     {
-        switch (objectType)
+        foreach (LoudThunkSetting loudThunkSetting in loudThunkSettings)
         {
-            case ObjectType.blockSoft:
-                toPlay = blockSoft;
-                break;
-            case ObjectType.blockHard:
-                toPlay = blockHard;
-                break;
-            case ObjectType.bottle:
-                toPlay = bottle;
-                break;
+            switch (loudThunkSetting.objectType)
+            {
+                case ObjectThunkType.blockSoft:
+                    loudThunkSetting.toPlay = blockSoft;
+                    break;
+                case ObjectThunkType.blockHard:
+                    loudThunkSetting.toPlay = blockHard;
+                    break;
+                case ObjectThunkType.bottle:
+                    loudThunkSetting.toPlay = bottle;
+                    break;
+            }
         }
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.relativeVelocity.magnitude >= minimumVelocity)
+        foreach (LoudThunkSetting loudThunkSetting in loudThunkSettings)
         {
-            GameObject audioObject = Instantiate(simpleSoundCardPlayer, transform.position, transform.rotation);
-            audioObject.GetComponent<SimpleSoundCardPlayer>().StartPlaying(toPlay);
+            if (collision.relativeVelocity.magnitude >= loudThunkSetting.minimumVelocity && (loudThunkSetting.minimumVelocity == -1 || collision.relativeVelocity.magnitude <= loudThunkSetting.minimumVelocity))
+            {
+                GameObject audioObject = Instantiate(simpleSoundCardPlayer, transform.position, transform.rotation);
+                audioObject.GetComponent<SimpleSoundCardPlayer>().StartPlaying(loudThunkSetting.toPlay);
+            }
         }
     }
+}
+
+[System.Serializable]
+public class LoudThunkSetting
+{
+    [SerializeField] public ObjectThunkType objectType;
+    [SerializeField, Range(0, 5)] public float minimumVelocity = 1;
+    [SerializeField, Range(-1, 10), Tooltip("Set to -1 for infinite.")] public float maximumVelocity = -1;
+    [HideInInspector] public Soundcard toPlay = null;
 }

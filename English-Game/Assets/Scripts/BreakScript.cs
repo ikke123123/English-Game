@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class BreakScript : MonoBehaviour
 {
+    [Header("Settings")]
     [SerializeField] private float breakLimit = 1;
     [SerializeField, Tooltip("Will only work if the liquid is attached")] private GameObject effect;
     [SerializeField] private MeshRenderer liquid;
+
+    [Header("Don't Touch")]
     [SerializeField] private GameObject replacementObject;
     [SerializeField] private Soundcard emptyGlassBreak;
     [SerializeField] private Soundcard fullGlassBreak;

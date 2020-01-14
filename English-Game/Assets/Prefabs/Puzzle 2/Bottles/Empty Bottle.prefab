@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8927186796874169182}
   - component: {fileID: 1764342228601950490}
   - component: {fileID: 3194640032301267501}
+  - component: {fileID: 7894971436253934360}
   m_Layer: 9
   m_Name: Empty Bottle
   m_TagString: TriggerBox
@@ -134,6 +135,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnUpdate: 1
   minHeight: -5
+--- !u!114 &7894971436253934360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7468260623322021749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434b8a7bcf36ae248ae80d14d08fb2ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loudThunkSettings:
+  - objectType: 2
+    minimumVelocity: 0
+    maximumVelocity: 3
+    toPlay: {fileID: 0}
+  blockSoft: {fileID: 11400000, guid: 7830a96d0d70d964084bc0c6090af390, type: 2}
+  blockHard: {fileID: 11400000, guid: 21897739e3a09ae4e9cb462c021db7a9, type: 2}
+  bottle: {fileID: 11400000, guid: e1b3a04a1d569684a901fd40606f791d, type: 2}
+  simpleSoundCardPlayer: {fileID: 5059980783895036102, guid: f18ffbf3988cd0c4aa619ec194f5be65,
+    type: 3}
 --- !u!1001 &360061281121617053
 PrefabInstance:
   m_ObjectHideFlags: 0
