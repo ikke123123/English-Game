@@ -29,7 +29,7 @@ public class PlayerData : MonoBehaviour
     [SerializeField] private int currentMilestoneID;
     [SerializeField] public Milestones currentMilestone;
 
-    private void Awake()
+    private void Start()
     {
         playerName = PlayerPrefs.GetString("CurrentPlayerName", "Mark-Peter");
         if (playerName == "Mark-Peter" && noSave) DeleteThisUser();
