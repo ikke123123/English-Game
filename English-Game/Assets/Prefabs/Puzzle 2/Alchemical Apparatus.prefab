@@ -62,6 +62,7 @@ MonoBehaviour:
   puzzleOneObject: {fileID: 0}
   combinationComponent: 2
   combinationObject: {fileID: 4866760211173543305}
+  crateObject: {fileID: 0}
   possibleCombinations: []
   combination: {fileID: 0}
   objectCards: []
@@ -127,6 +128,7 @@ MonoBehaviour:
   puzzleOneObject: {fileID: 0}
   combinationComponent: 1
   combinationObject: {fileID: 4866760211173543305}
+  crateObject: {fileID: 0}
   possibleCombinations:
   - {fileID: 11400000, guid: 5ba5d47406ce4e546a96e34da8e536c6, type: 2}
   combination: {fileID: 0}
@@ -248,6 +250,9 @@ MonoBehaviour:
   clearOnCombine:
   - {fileID: 6355916358299069828}
   - {fileID: 8523323176632921752}
+  simpleSoundCardPlayer: {fileID: 5059980783895036102, guid: f18ffbf3988cd0c4aa619ec194f5be65,
+    type: 3}
+  playOnCombine: {fileID: 11400000, guid: ffcf62a677f3f554f8f90375a49ba189, type: 2}
   canCombine: 0
   possibleCombination: {fileID: 0}
   gameObjectsInCombination: []

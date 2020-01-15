@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GlassCollide
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 49c5aebaddebf904da478def2aa830c7, type: 3}
-  volume: 1
+  volume: 0.4
   rampOffStep: -1
   rampOnStep: 1
   loop: 0

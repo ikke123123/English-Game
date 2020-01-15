@@ -38,8 +38,9 @@ public class LoudThunk : MonoBehaviour
     {
         foreach (LoudThunkSetting loudThunkSetting in loudThunkSettings)
         {
-            if (collision.relativeVelocity.magnitude >= loudThunkSetting.minimumVelocity && (loudThunkSetting.minimumVelocity == -1 || collision.relativeVelocity.magnitude <= loudThunkSetting.minimumVelocity))
+            if (collision.relativeVelocity.magnitude >= loudThunkSetting.minimumVelocity && (loudThunkSetting.maximumVelocity == -1 || collision.relativeVelocity.magnitude <= loudThunkSetting.maximumVelocity))
             {
+                /* && (loudThunkSetting.minimumVelocity == -1 || collision.relativeVelocity.magnitude <= loudThunkSetting.minimumVelocity)*/
                 GameObject audioObject = Instantiate(simpleSoundCardPlayer, transform.position, transform.rotation);
                 audioObject.GetComponent<SimpleSoundCardPlayer>().StartPlaying(loudThunkSetting.toPlay);
             }
