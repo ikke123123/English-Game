@@ -18,8 +18,10 @@ public class RaycastRightHand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int layerMaskFloor = 11 << 12;
-        int layerMaskGrab = 1 << 9;
+        int layerMaskFloor = 1 << 12;
+        int layerMaskGrab = 1<< 9;
+        //int layerMaskUI = 1 << 5;
+
         Vector3 handPointing = transform.TransformDirection(Vector3.forward);
         RaycastHit hit;
 
