@@ -40,7 +40,7 @@ public class RaycastRightHand : MonoBehaviour
                 hitObject.transform.position = hit.point;
             }
 
-            hit.collider.gameObject.GetComponent<ChangeColor>().isHit();
+            if (hit.collider.gameObject.GetComponent<ChangeColor>()) hit.collider.gameObject.GetComponent<ChangeColor>().isHit();
             lastHitFloor = hit.collider.gameObject.GetComponent<ChangeColor>();
             //Debug.Log("hey");
         }

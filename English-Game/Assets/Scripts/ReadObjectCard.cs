@@ -23,7 +23,8 @@ public class ReadObjectCard : MonoBehaviour
     [SerializeField, Tooltip("Pushes an Object card to the puzzle one object. Can be left empty.")] private PuzzleOneScript puzzleOneObject = null;
     [Header("Puzzle Two")]
     [SerializeField, Tooltip("Select purpose of object data reader. Can be left at unselected if not used.")] private CombinationComponent combinationComponent;
-    [SerializeField, Tooltip("Script that decides what needs to happen with the object cards that are pushed, made for puzzle 2. Can be left empty.")] private Combination combinationObject = null;
+    [SerializeField, Tooltip("Script that decides what needs to happen with the object cards that are pushed, made for puzzle 2. Can be left empty.")] private Puzzle2Script combinationObject = null;
+    [SerializeField, Tooltip("Script that decides what needs to happen with the object cards that are pushed, made for puzzle 2. Can be left empty.")] private Puzzle2Crate crateObject = null;
     [SerializeField, Tooltip("All possible combinations (leave out the alternative possible). Put only on the read object/Collider")] private Combinations[] possibleCombinations;
 
     [Header("Debug")]
@@ -51,6 +52,7 @@ public class ReadObjectCard : MonoBehaviour
                 foreach (ObjectCardAction objectCardAction in cardAction) if (objectCardAction.card == objectCard) objectCardAction.onEnter.Invoke();
                 objectCards.Add(objectCard);
                 PushCardToPuzzleOneObject(objectCard);
+                PushToCrate(objectCard, collider.gameObject);
                 if (combinationComponent == CombinationComponent.read) PushCombination();
                 if (combinationComponent == CombinationComponent.write) PushCardAndObject(objectCard, collider.gameObject);
             }
@@ -79,6 +81,12 @@ public class ReadObjectCard : MonoBehaviour
 
         CombinationCheck();
         combinationObject.CatchPossibleCombinations(gameObjects.ToArray(), combination);
+    }
+
+    public void PushToCrate(ObjectCard card, GameObject gameobject)
+    {
+        if (crateObject == null) return;
+        crateObject.ReceiveCard(card , gameobject);
     }
 
     public void PushCardAndObject(ObjectCard card, GameObject gameObject)

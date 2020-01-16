@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SoftCollider
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 21fdfe2085be66b4093f6b90e420b047, type: 3}
-  volume: 1
+  volume: 0.4
   rampOffStep: -1
   rampOnStep: 1
   loop: 0

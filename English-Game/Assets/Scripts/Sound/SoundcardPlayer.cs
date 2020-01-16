@@ -64,8 +64,12 @@ public class SoundcardPlayer : MonoBehaviour
             {
                 if (soundcard.category == soundcard1.category)
                 {
-                    soundcard1.playAfterThis = soundcard;
-                    soundcard1.timePlayAfterThis = -1;
+                    if (soundcard1.playAfterThis = null)
+                    {
+                        soundcard1.playAfterThis = soundcard;
+                        soundcard1.timePlayAfterThis = -1;
+                        return;
+                    }
                 }
             }
             Debug.Log("Couldn't start playing sound because of Catagory State being turned On.");
@@ -74,6 +78,11 @@ public class SoundcardPlayer : MonoBehaviour
 
     public void StartPlaying(Soundcard soundcard, bool overrideCategory = false)
     {
+        if (soundcard == null)
+        {
+            Debug.LogWarning("Soundcard was empty.");
+            return;
+        }
         if (soundcard.state == State.off && soundcard.volume != 0)
         {
             if (SoundCategory.CategoryStateOff(soundcard) || overrideCategory)
@@ -94,8 +103,7 @@ public class SoundcardPlayer : MonoBehaviour
             {
                 if (soundcard.category == soundcard1.category)
                 {
-                    soundcard1.playAfterThis = soundcard;
-                    soundcard1.timePlayAfterThis = -1;
+                    PlayAfterThis(soundcard1, soundcard);
                 }
             }
             Debug.Log("Couldn't start playing sound because of Catagory State being turned On.");
@@ -152,6 +160,17 @@ public class SoundcardPlayer : MonoBehaviour
 
 
     //Private
+    private void PlayAfterThis(Soundcard playThis, Soundcard afterThis)
+    {
+        if (afterThis.playAfterThis = null)
+        {
+            afterThis.playAfterThis = playThis;
+            afterThis.timePlayAfterThis = -1;
+            return;
+        }
+        PlayAfterThis(afterThis.playAfterThis, playThis);
+    }
+
     private bool DestroyAudioSource(Soundcard soundcard)
     {
         soundcard.state = State.off;
