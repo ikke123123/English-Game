@@ -28,7 +28,7 @@ public class Puzzle2Crate : MonoBehaviour
             }
             if (objectCard == crateCompletions[currentNumber].card)
             {
-                gameobject.layer = 0;
+                gameobject.layer = 16;
                 if (gameobject.GetComponent<BreakScript>()) Destroy(gameobject.GetComponent<BreakScript>());
                 player.StartPlaying(crateCompletions[currentNumber].toPlay);
                 currentNumber++;

@@ -162,7 +162,7 @@ public class SoundcardPlayer : MonoBehaviour
     //Private
     private void PlayAfterThis(Soundcard playThis, Soundcard afterThis)
     {
-        if (afterThis.playAfterThis = null)
+        if (afterThis.playAfterThis == null)
         {
             afterThis.playAfterThis = playThis;
             afterThis.timePlayAfterThis = -1;
