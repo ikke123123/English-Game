@@ -1126,5 +1126,20 @@ PrefabInstance:
       propertyPath: pointer
       value: 
       objectReference: {fileID: 1038146354082650}
+    - target: {fileID: 7254227052042731572, guid: d044bce2efe10a542bdde9d08489079c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveSomewhere
+      objectReference: {fileID: 0}
+    - target: {fileID: 7254227052042731723, guid: d044bce2efe10a542bdde9d08489079c,
+        type: 3}
+      propertyPath: TeleportLocation.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7254227052042731723, guid: d044bce2efe10a542bdde9d08489079c,
+        type: 3}
+      propertyPath: Ancor
+      value: 
+      objectReference: {fileID: 942383877}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d044bce2efe10a542bdde9d08489079c, type: 3}
