@@ -88,7 +88,7 @@ public class Puzzle2Script : MonoBehaviour
         if (possibleCombination == null) possibleCombination = alternativeComponent;
         Debug.Log("Combine apply ran");
         foreach (GameObject gameObject in gameObjectsInCombination) Destroy(gameObject);
-        emptyComponentGameObject.layer = 0;
+        emptyComponentGameObject.layer = 16;
         Invoke("SpawnNewBottle", 3);
         gameObjectsInCombination = null;
         foreach (ReadObjectCard readObjectCard in clearOnCombine) readObjectCard.ClearOnCombine();
