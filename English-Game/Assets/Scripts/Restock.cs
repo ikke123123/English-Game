@@ -8,6 +8,8 @@ public class Restock : MonoBehaviour
     //             Made By Thomas
     //------------------------------------------
 
+    [Header("Settings")]
+    [SerializeField] private bool disabled = false;
     [SerializeField] private ObjectCard card = null;
 
     private GameObject prefab = null;
@@ -18,11 +20,20 @@ public class Restock : MonoBehaviour
         prefab = card.prefab;
     }
 
+    public void RestockerOnOff(bool off)
+    {
+        disabled = off;
+    }
+
     private void Update()
     {
-        if (prefab != null && son == null)
+        if (disabled == false)
         {
-            son = Instantiate(prefab, new Vector3(transform.position.x, transform.position.y + prefab.GetComponent<Collider>().bounds.extents.y, transform.position.z), transform.rotation);
+            if (prefab != null && son == null)
+            {
+                son = Instantiate(prefab, new Vector3(transform.position.x, transform.position.y + prefab.GetComponent<Collider>().bounds.extents.y, transform.position.z), transform.rotation);
+            }
         }
+
     }
 }

@@ -8,11 +8,13 @@ public class BreakScript : MonoBehaviour
     [SerializeField] private float breakLimit = 1;
     [SerializeField, Tooltip("Will only work if the liquid is attached")] private GameObject effect;
     [SerializeField] private MeshRenderer liquid;
+    [SerializeField] public SoundcardPlayer specialBreak;
 
     [Header("Don't Touch")]
     [SerializeField] private GameObject replacementObject;
     [SerializeField] private Soundcard emptyGlassBreak;
     [SerializeField] private Soundcard fullGlassBreak;
+    [SerializeField] private Soundcard specialBreakSoundcard;
     [SerializeField] private GameObject simpleSoundCardPlayer;
     [HideInInspector] private bool hasBroken = false;
 
@@ -29,6 +31,10 @@ public class BreakScript : MonoBehaviour
                 audioObject.GetComponent<SimpleSoundCardPlayer>().StartPlaying(fullGlassBreak);
             }
             else audioObject.GetComponent<SimpleSoundCardPlayer>().StartPlaying(emptyGlassBreak);
+            if (specialBreak != null)
+            {
+                specialBreak.StartPlaying(specialBreakSoundcard, true);
+            }
             CodeLibrary.ReplaceObject(gameObject, replacementObject);
         }
     }

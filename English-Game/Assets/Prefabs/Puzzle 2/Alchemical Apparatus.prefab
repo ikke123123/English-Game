@@ -247,6 +247,8 @@ MonoBehaviour:
   fullComponent: {fileID: 11400000, guid: 19e386de4146cbd42b899a54958658c9, type: 2}
   alternativeComponent: {fileID: 11400000, guid: e043cc86ce6687747b1f331377e29b74,
     type: 2}
+  specialCard: {fileID: 11400000, guid: e7f91cea7d962634a861002530928efd, type: 2}
+  soundcardPlayer: {fileID: 0}
   clearOnCombine:
   - {fileID: 6355916358299069828}
   - {fileID: 8523323176632921752}

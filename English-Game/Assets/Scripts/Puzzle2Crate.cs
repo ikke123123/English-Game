@@ -11,6 +11,9 @@ public class Puzzle2Crate : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private UnityEvent onCompletion;
     [SerializeField] private SoundcardPlayer player;
+    [SerializeField] private bool makeUnbreakable = true;
+    [SerializeField] private bool makeUntouchable = true;
+
     [SerializeField] private CrateCompletion[] crateCompletions;
 
     [Header("Debug")]
@@ -28,8 +31,8 @@ public class Puzzle2Crate : MonoBehaviour
             }
             if (objectCard == crateCompletions[currentNumber].card)
             {
-                gameobject.layer = 16;
-                if (gameobject.GetComponent<BreakScript>()) Destroy(gameobject.GetComponent<BreakScript>());
+                if (makeUntouchable) gameobject.layer = 16;
+                if (gameobject.GetComponent<BreakScript>() && makeUnbreakable) Destroy(gameobject.GetComponent<BreakScript>());
                 player.StartPlaying(crateCompletions[currentNumber].toPlay);
                 currentNumber++;
                 if (currentNumber >= crateCompletions.Length)

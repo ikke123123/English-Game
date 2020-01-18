@@ -16,6 +16,8 @@ public class Puzzle2Script : MonoBehaviour
     [SerializeField, Tooltip("The empty component that's required for the combination, for instance the empty bottle.")] private ObjectCard emptyComponent;
     [SerializeField, Tooltip("The resulting component, for instance the full bottle.")] private ObjectCard fullComponent;
     [SerializeField, Tooltip("If the game doesn't receive a correct combination object, it will create this instead.")] private Combinations alternativeComponent;
+    [SerializeField] private Combinations specialCombination;
+    [SerializeField] private SoundcardPlayer soundcardPlayer;
     [SerializeField] private ReadObjectCard[] clearOnCombine;
 
     [Header("Don't Touch")]
@@ -23,6 +25,7 @@ public class Puzzle2Script : MonoBehaviour
     [SerializeField] private Soundcard playOnCombine;
 
     [Header("Debug")]
+    [SerializeField] public bool specialCombinationEnabled = false;
     [SerializeField] private bool canCombine = false;
     [SerializeField] private Combinations possibleCombination;
     [SerializeField] private GameObject[] gameObjectsInCombination;
@@ -81,11 +84,16 @@ public class Puzzle2Script : MonoBehaviour
         }
     }
 
+    public void EnableSpecialComponent(bool enabled)
+    {
+        specialCombinationEnabled = enabled;
+    }
+
     private void ApplyCombine()
     {
         GameObject audioObject = Instantiate(simpleSoundCardPlayer, transform.position, transform.rotation);
         audioObject.GetComponent<SimpleSoundCardPlayer>().StartPlaying(playOnCombine);
-        if (possibleCombination == null) possibleCombination = alternativeComponent;
+        if (possibleCombination == null || (possibleCombination == specialCombination && specialCombinationEnabled == false)) possibleCombination = alternativeComponent;
         Debug.Log("Combine apply ran");
         foreach (GameObject gameObject in gameObjectsInCombination) Destroy(gameObject);
         emptyComponentGameObject.layer = 16;
@@ -101,6 +109,7 @@ public class Puzzle2Script : MonoBehaviour
         GameObject newObject = Instantiate(fullComponent.prefab, emptyComponentGameObject.transform.position, emptyComponentGameObject.transform.rotation);
         if (newObject.GetComponent<ObjectCardHolder>() == false) newObject.AddComponent<ObjectCardHolder>();
         newObject.GetComponent<ObjectCardHolder>().objectCard = possibleCombination.result;
+        if (possibleCombination == specialCombination) newObject.GetComponent<BreakScript>().specialBreak = soundcardPlayer;
         newObject.GetComponent<ColorChanger>().ChangeColor(possibleCombination.result.prefab.GetComponent<MeshRenderer>().sharedMaterial.GetColor("_Color"));
         Destroy(emptyComponentGameObject);
         possibleCombination = null;

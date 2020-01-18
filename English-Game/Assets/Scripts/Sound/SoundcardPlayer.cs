@@ -162,6 +162,7 @@ public class SoundcardPlayer : MonoBehaviour
     //Private
     private void PlayAfterThis(Soundcard playThis, Soundcard afterThis)
     {
+        if (afterThis == playThis || afterThis.playAfterThis == playThis) return;
         if (afterThis.playAfterThis == null)
         {
             afterThis.playAfterThis = playThis;

@@ -91,8 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f22d5565ef447634d8a9c612b79d498f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startColor: {r: 1, g: 1, b: 1, a: 0}
-  hoverColor: {r: 0.6650944, g: 0.87883264, b: 1, a: 0}
+  startColor: {r: 1, g: 1, b: 1, a: 0.29803923}
+  hoverColor: {r: 0.5, g: 0.8352941, b: 1, a: 0.29803923}
   anchor: {fileID: 0}
   player: {fileID: 0}
   ancor: {fileID: 0}

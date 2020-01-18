@@ -444,7 +444,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   player: {fileID: 0}
-  crateCompletions: []
+  makeUnbreakable: 1
+  makeUntouchable: 1
+  crateCompletions:
+  - card: {fileID: 11400000, guid: 1d25fdcdc3137e746905e6602f2939e2, type: 2}
+    toPlay: {fileID: 0}
   completed: 0
   currentNumber: 0
 --- !u!65 &4509133797164593229
