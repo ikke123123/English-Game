@@ -11,7 +11,7 @@ Material:
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _DETAIL_MULX2 _EMISSION _METALLICGLOSSMAP
     _NORMALMAP _PARALLAXMAP
-  m_LightmapFlags: 1
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
@@ -38,7 +38,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: d0ef85a28d85c2e4398b6a42d9654c59, type: 3}
+        m_Texture: {fileID: 2800000, guid: f1aeb6a101f008149af42fd10d1ad5a1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -75,5 +75,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 0.6}
-    - _EmissionColor: {r: 0.25098044, g: 0.25098044, b: 0.25098044, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 0.79607844}
+    - _EmissionColor: {r: 2.5254903, g: 1.2862746, b: 1.8039216, a: 1}

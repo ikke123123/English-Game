@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2087242399766711292}
   - component: {fileID: 3671388411215041457}
   m_Layer: 0
-  m_Name: Point Light (1)
+  m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,9 +24,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2160155207078103913}
-  m_LocalRotation: {x: 0.35350353, y: -0.61240125, z: -0.61240125, w: 0.35350353}
-  m_LocalPosition: {x: 0.000037508653, y: 0.00011322856, z: 0.0012309961}
-  m_LocalScale: {x: 0.008276473, y: 0.008276466, z: 0.008276472}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.000158, y: 0.00007, z: 0.001324}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2294053209002244450}
   m_RootOrder: 0
@@ -48,7 +48,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -81,7 +81,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -117,15 +117,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2570167654110187185}
-  m_LocalRotation: {x: -0.6829978, y: 0.1830683, z: 0.1830683, w: 0.6829978}
-  m_LocalPosition: {x: 0.060358956, y: 0.067632735, z: 0.024456687}
+  m_LocalRotation: {x: -0.68299836, y: 0.18306638, z: 0.18306638, w: 0.68299836}
+  m_LocalPosition: {x: 0, y: 0.067632735, z: 0}
   m_LocalScale: {x: 60.41226, y: 60.41226, z: 60.412262}
   m_Children:
   - {fileID: 2087242399766711292}
   - {fileID: 956744447983305237}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 30.009}
 --- !u!33 &7866041653037405686
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -195,7 +195,7 @@ PrefabInstance:
     - target: {fileID: 2549192683122102056, guid: 2a7f0cdebbe231c4a8ca087e6189e3ca,
         type: 3}
       propertyPath: m_Name
-      value: Fire (1)
+      value: Fire
       objectReference: {fileID: 0}
     - target: {fileID: 6386027517020593924, guid: 2a7f0cdebbe231c4a8ca087e6189e3ca,
         type: 3}
@@ -255,17 +255,17 @@ PrefabInstance:
     - target: {fileID: 6386027517020593924, guid: 2a7f0cdebbe231c4a8ca087e6189e3ca,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6386027517020593924, guid: 2a7f0cdebbe231c4a8ca087e6189e3ca,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.25
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6386027517020593924, guid: 2a7f0cdebbe231c4a8ca087e6189e3ca,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.25
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a7f0cdebbe231c4a8ca087e6189e3ca, type: 3}
