@@ -12,7 +12,7 @@ MonoImporter:
       type: 3}
   - emptyGlassBreak: {fileID: 11400000, guid: 7b55c9ca660a5674ea24eba5ab53be14, type: 2}
   - fullGlassBreak: {fileID: 11400000, guid: 9d7a1bb39bdab8c4d9ca2d9086d6c6f5, type: 2}
-  - specialBreakSoundcard: {fileID: 11400000, guid: f679ee186a9575c4a813d991a0cdf3b0,
+  - specialBreakSoundcard: {fileID: 11400000, guid: 1ef88787d8bdc244db9fe81005a183e9,
       type: 2}
   - simpleSoundCardPlayer: {fileID: 5059980783895036102, guid: f18ffbf3988cd0c4aa619ec194f5be65,
       type: 3}

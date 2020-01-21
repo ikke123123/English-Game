@@ -31,7 +31,7 @@ public class Restock : MonoBehaviour
         {
             if (prefab != null && son == null)
             {
-                son = Instantiate(prefab, new Vector3(transform.position.x, transform.position.y + prefab.GetComponent<Collider>().bounds.extents.y, transform.position.z), transform.rotation);
+                son = Instantiate(prefab, new Vector3(transform.position.x, transform.position.y + prefab.GetComponent<Collider>().bounds.extents.y, transform.position.z), prefab.transform.rotation);
             }
         }
 

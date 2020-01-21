@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff2b309ddb9fbd4e98db08aedbcb955, type: 3}
+  m_Name: Easy Gardening Potion
+  m_EditorClassIdentifier: 
+  combinesWith:
+  - {fileID: 11400000, guid: d7ec545fca5447b479916ea4782f3ae4, type: 2}
+  - {fileID: 11400000, guid: 2107d8412aa141f4fabb754483d446ca, type: 2}
+  - {fileID: 11400000, guid: accd9b2da8b87064a9325f5231f24c59, type: 2}
+  result: {fileID: 11400000, guid: 2fc08baf8b45e0d4086a44b4b04f3229, type: 2}

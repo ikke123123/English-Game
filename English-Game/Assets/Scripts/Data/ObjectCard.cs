@@ -19,8 +19,6 @@ public class ObjectCard : ScriptableObject
     [SerializeField, Tooltip("Can be left empty, is only used for first puzzle. Pick: Blue, Gray, or Green.")] public PictureTag location;
     [SerializeField, Tooltip("Can be left empty, is only used for first puzzle. Pick: Standard, Lighter, or Darker.")] public PictureTag attribute;
     [SerializeField, Tooltip("Can be left empty, is only used for first puzzle. Pick: Normal, Metallic, or Transparent.")] public PictureTag activity;
-    [Header("Second Puzzle")]
-    [SerializeField, Tooltip("Can be left empty, is only used for second puzzle.")] public Combinations[] combinations;
     [HideInInspector] public List<GameObject> assignedGameObject;
 
     private void OnEnable()

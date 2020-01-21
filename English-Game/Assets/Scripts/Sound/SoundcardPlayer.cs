@@ -240,8 +240,11 @@ public class SoundcardPlayer : MonoBehaviour
         List<Soundcard> destroySoundcards = new List<Soundcard>();
         foreach (Soundcard soundcard in rampOffAudioSources)
         {
-            if (soundcard.audioSource.volume + soundcard.rampOffStep <= 0) destroySoundcards.Add(soundcard);
-            else soundcard.audioSource.volume += soundcard.rampOffStep;
+            if (soundcard.audioSource != null)
+            {
+                if (soundcard.audioSource.volume + soundcard.rampOffStep <= 0) destroySoundcards.Add(soundcard);
+                else soundcard.audioSource.volume += soundcard.rampOffStep;
+            }
         }
         foreach (Soundcard soundcard in destroySoundcards)
         {

@@ -130,7 +130,7 @@ MonoBehaviour:
   combinationObject: {fileID: 4866760211173543305}
   crateObject: {fileID: 0}
   possibleCombinations:
-  - {fileID: 11400000, guid: 5ba5d47406ce4e546a96e34da8e536c6, type: 2}
+  - {fileID: 0}
   combination: {fileID: 0}
   objectCards: []
   gameObjects: []
@@ -204,7 +204,7 @@ MeshRenderer:
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
+  m_ScaleInLightmap: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -247,7 +247,7 @@ MonoBehaviour:
   fullComponent: {fileID: 11400000, guid: 19e386de4146cbd42b899a54958658c9, type: 2}
   alternativeComponent: {fileID: 11400000, guid: e043cc86ce6687747b1f331377e29b74,
     type: 2}
-  specialCard: {fileID: 11400000, guid: e7f91cea7d962634a861002530928efd, type: 2}
+  specialCombination: {fileID: 11400000, guid: 7ebddc8e536db0f47b3ba3983d4b0dc7, type: 2}
   soundcardPlayer: {fileID: 0}
   clearOnCombine:
   - {fileID: 6355916358299069828}
@@ -255,6 +255,7 @@ MonoBehaviour:
   simpleSoundCardPlayer: {fileID: 5059980783895036102, guid: f18ffbf3988cd0c4aa619ec194f5be65,
     type: 3}
   playOnCombine: {fileID: 11400000, guid: ffcf62a677f3f554f8f90375a49ba189, type: 2}
+  specialCombinationEnabled: 0
   canCombine: 0
   possibleCombination: {fileID: 0}
   gameObjectsInCombination: []

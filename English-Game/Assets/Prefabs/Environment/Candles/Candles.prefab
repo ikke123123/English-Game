@@ -45,6 +45,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small Candle
       objectReference: {fileID: 0}
+    - target: {fileID: 8685114214859836467, guid: 40cc171fde3037e4eaebfd658d2d63a6,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2218516802570078490, guid: 40cc171fde3037e4eaebfd658d2d63a6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -120,6 +125,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Middle Candle
       objectReference: {fileID: 0}
+    - target: {fileID: 2570167654110187185, guid: a20fdc8e4f3ef29418b9de81cef735d7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2294053209002244450, guid: a20fdc8e4f3ef29418b9de81cef735d7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -194,6 +204,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Big Candle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2030278782489226784, guid: 387de137699bc7b40909c5fdbb581d3c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 305989615907903860, guid: 387de137699bc7b40909c5fdbb581d3c,
         type: 3}

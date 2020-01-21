@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff2b309ddb9fbd4e98db08aedbcb955, type: 3}
+  m_Name: Ignite Potion
+  m_EditorClassIdentifier: 
+  combinesWith:
+  - {fileID: 11400000, guid: 3ced336de25c04449a4d8278ebdf894c, type: 2}
+  - {fileID: 11400000, guid: a94baaa3d213bfb498964e7c1ec5f288, type: 2}
+  - {fileID: 11400000, guid: 2107d8412aa141f4fabb754483d446ca, type: 2}
+  - {fileID: 11400000, guid: accd9b2da8b87064a9325f5231f24c59, type: 2}
+  - {fileID: 11400000, guid: d9b4f509699e6774482c1b9ea37c8ec1, type: 2}
+  result: {fileID: 11400000, guid: e35a08dda2e2dff449ef74547d898c75, type: 2}
