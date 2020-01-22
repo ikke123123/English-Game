@@ -926,6 +926,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1703788361}
+          m_MethodName: StartPlaying1
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 1c37708508bb4934fb6fffcbb337331a,
+              type: 2}
+            m_ObjectArgumentAssemblyTypeName: Soundcard, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     toDoWhenCompleted:
@@ -4682,7 +4694,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  cardAnswer: 3
+  cardAnswer: 5
   disablePuzzle: 1
   textAfterCompletion: 
 --- !u!114 &874935755
@@ -9650,6 +9662,77 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.0012718097
       objectReference: {fileID: 0}
+    - target: {fileID: 6355916358299069828, guid: c4f96d0f9a6f1724293b78e490a0bae0,
+        type: 3}
+      propertyPath: possibleCombinations.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6355916358299069828, guid: c4f96d0f9a6f1724293b78e490a0bae0,
+        type: 3}
+      propertyPath: possibleCombinations.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: a1c0d0c45161e4145805c667e5754c41,
+        type: 2}
+    - target: {fileID: 6355916358299069828, guid: c4f96d0f9a6f1724293b78e490a0bae0,
+        type: 3}
+      propertyPath: possibleCombinations.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9fe9044b25430fc44a3f07bee4a319a4,
+        type: 2}
+    - target: {fileID: 6355916358299069828, guid: c4f96d0f9a6f1724293b78e490a0bae0,
+        type: 3}
+      propertyPath: possibleCombinations.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 09afd7bce3462a943bc1366afd145b68,
+        type: 2}
+    - target: {fileID: 6355916358299069828, guid: c4f96d0f9a6f1724293b78e490a0bae0,
+        type: 3}
+      propertyPath: possibleCombinations.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 80b0d76815c0c784da5a31da04d8bf63,
+        type: 2}
+    - target: {fileID: 6355916358299069828, guid: c4f96d0f9a6f1724293b78e490a0bae0,
+        type: 3}
+      propertyPath: possibleCombinations.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3f8adf309c9e1944696375b70d04dac7,
+        type: 2}
+    - target: {fileID: 6355916358299069828, guid: c4f96d0f9a6f1724293b78e490a0bae0,
+        type: 3}
+      propertyPath: possibleCombinations.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: e3b8ef8fa30b3b04d9188dc9b596af2e,
+        type: 2}
+    - target: {fileID: 6355916358299069828, guid: c4f96d0f9a6f1724293b78e490a0bae0,
+        type: 3}
+      propertyPath: possibleCombinations.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7ebddc8e536db0f47b3ba3983d4b0dc7,
+        type: 2}
+    - target: {fileID: 6355916358299069828, guid: c4f96d0f9a6f1724293b78e490a0bae0,
+        type: 3}
+      propertyPath: possibleCombinations.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: de61f6d533747584a9699853a99a8d82,
+        type: 2}
+    - target: {fileID: 6355916358299069828, guid: c4f96d0f9a6f1724293b78e490a0bae0,
+        type: 3}
+      propertyPath: possibleCombinations.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: f4c5204c6a416c94f9c650ab15e03c61,
+        type: 2}
+    - target: {fileID: 6355916358299069828, guid: c4f96d0f9a6f1724293b78e490a0bae0,
+        type: 3}
+      propertyPath: possibleCombinations.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: de61f6d533747584a9699853a99a8d82,
+        type: 2}
+    - target: {fileID: 6355916358299069828, guid: c4f96d0f9a6f1724293b78e490a0bae0,
+        type: 3}
+      propertyPath: possibleCombinations.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: f4c5204c6a416c94f9c650ab15e03c61,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4f96d0f9a6f1724293b78e490a0bae0, type: 3}
 --- !u!1001 &3829983203831691551
