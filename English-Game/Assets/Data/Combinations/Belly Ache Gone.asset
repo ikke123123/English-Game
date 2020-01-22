@@ -15,5 +15,6 @@ MonoBehaviour:
   combinesWith:
   - {fileID: 11400000, guid: 51d63289d99953a44b9aca31298a23f7, type: 2}
   - {fileID: 11400000, guid: 2107d8412aa141f4fabb754483d446ca, type: 2}
+  - {fileID: 11400000, guid: 2107d8412aa141f4fabb754483d446ca, type: 2}
   - {fileID: 11400000, guid: aacc3ed390871c34eb5ba986ca0030b5, type: 2}
   result: {fileID: 11400000, guid: 2c17fc281269919439cbbdf426544696, type: 2}
