@@ -2467,15 +2467,15 @@ PrefabInstance:
       propertyPath: hitObject
       value: 
       objectReference: {fileID: 395774710}
-    - target: {fileID: 22979713243711491, guid: 80981abfa986e9348a522ffe3cbbe569,
-        type: 3}
-      propertyPath: teleportIndicatorRangeCutoff
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 22979711526434639, guid: 80981abfa986e9348a522ffe3cbbe569,
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22979713243711491, guid: 80981abfa986e9348a522ffe3cbbe569,
+        type: 3}
+      propertyPath: teleportIndicatorRangeCutoff
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 22979712674839699, guid: 80981abfa986e9348a522ffe3cbbe569, type: 3}
@@ -3361,7 +3361,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 3.7865544e-24, z: 1.006e-42, w: 2.679467e-24}
+  m_BoundingSphereOverride: {x: 1e-45, y: NaN, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -4675,6 +4675,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8740798488869646900, guid: 6c53e8d5891bcd248b5e7160feaf8302,
+        type: 3}
+      propertyPath: m_Name
+      value: Door w stuff
+      objectReference: {fileID: 0}
     - target: {fileID: 9066924469041210306, guid: 6c53e8d5891bcd248b5e7160feaf8302,
         type: 3}
       propertyPath: cardAction.Array.data[0].onEnter.m_PersistentCalls.m_Calls.Array.size
@@ -4716,11 +4721,6 @@ PrefabInstance:
         type: 3}
       propertyPath: cardAction.Array.data[0].onEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8740798488869646900, guid: 6c53e8d5891bcd248b5e7160feaf8302,
-        type: 3}
-      propertyPath: m_Name
-      value: Door w stuff
       objectReference: {fileID: 0}
     - target: {fileID: 5698975693351567399, guid: 6c53e8d5891bcd248b5e7160feaf8302,
         type: 3}
@@ -4794,7 +4794,7 @@ PrefabInstance:
     - target: {fileID: 4349225081555296714, guid: 575156a2ccd40fd42bb591680c00d138,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4349225081555296711, guid: 575156a2ccd40fd42bb591680c00d138,
         type: 3}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c4dd207103b874794531bb0c609db0, type: 3}
   m_Name: Necklace
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 6960659745086476049, guid: 5e2ab27cc5f47384bb207f483b677451, type: 3}
   location: 0
   attribute: 0
   activity: 0
