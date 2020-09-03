@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class ObjectCardHolder : MonoBehaviour
 {
-    //------------------------------------------
-    //             Made By Thomas
-    //------------------------------------------
+    //-------------------------------------------
     //Script holds an objectcard for this object
     //and assigns this object to the card.
+    //-------------------------------------------
 
     [SerializeField] public ObjectCard objectCard;
 

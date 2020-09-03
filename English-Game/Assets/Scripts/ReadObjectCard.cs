@@ -6,39 +6,37 @@ using UnityEngine.Events;
 public class ReadObjectCard : MonoBehaviour
 {
     //------------------------------------------
-    //             Made By Thomas
-    //------------------------------------------
     //Script maintains a list of objectcards that
     //are currently within the bounds of the
     //trigger. And sends the Object Cards around
     //when a card enters its bounds.
     //------------------------------------------
-    //Last Modification Time: 22:41 07/01/2020
 
-    [HideInInspector] private enum CombinationComponent { unselected, read, write };
+    private enum CombinationComponent { unselected, read, write };
 
     [Header("Data")]
-    [SerializeField, Tooltip("Action that will be taken upon a certain card entering/leaving. Can be left empty")] private ObjectCardAction[] cardAction;
+    [SerializeField, Tooltip("Action that will be taken upon a certain card entering/leaving. Can be left empty")] private ObjectCardAction[] cardAction = null;
     [Header("Puzzle One")]
     [SerializeField, Tooltip("Pushes an Object card to the puzzle one object. Can be left empty.")] private PuzzleOneScript puzzleOneObject = null;
     [Header("Puzzle Two")]
     [SerializeField, Tooltip("Select purpose of object data reader. Can be left at unselected if not used.")] private CombinationComponent combinationComponent;
     [SerializeField, Tooltip("Script that decides what needs to happen with the object cards that are pushed, made for puzzle 2. Can be left empty.")] private Puzzle2Script combinationObject = null;
     [SerializeField, Tooltip("Script that decides what needs to happen with the object cards that are pushed, made for puzzle 2. Can be left empty.")] private Puzzle2Crate crateObject = null;
-    [SerializeField, Tooltip("All possible combinations (leave out the alternative possible). Put only on the read object/Collider")] private Combinations[] possibleCombinations;
+    [SerializeField, Tooltip("All possible combinations (leave out the alternative and special combination). Put only on the read object/collider")] private Combinations[] possibleCombinations = null;
 
     [Header("Debug")]
-    [SerializeField] private Combinations combination;
+    [SerializeField] private Combinations combination = null;
     [SerializeField] private List<ObjectCard> objectCards = new List<ObjectCard>();
     [SerializeField] private List<GameObject> gameObjects = new List<GameObject>();
 
     private void Awake()
     {
+        //Check to see if the gameObject contains a trigger.
         foreach (Collider collider in gameObject.GetComponents<Collider>())
         {
             if (collider.isTrigger) return;
         }
-        Debug.LogWarning(gameObject.name + " doesn't contain a collider");
+        Debug.LogWarning(gameObject.name + " doesn't contain a trigger.");
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -46,9 +44,11 @@ public class ReadObjectCard : MonoBehaviour
         if (collider.gameObject.GetComponent<ObjectCardHolder>() && collider.gameObject.GetComponent<ObjectCardHolder>().objectCard != null)
         {
             gameObjects.Add(collider.gameObject);
-            foreach (ObjectCardHolder objectCard1 in collider.gameObject.GetComponents<ObjectCardHolder>())
+            //Checks for different cards being held. And adds them to stored list of cards in trigger.
+            foreach (ObjectCardHolder objectCardHolder in collider.gameObject.GetComponents<ObjectCardHolder>())
             {
-                ObjectCard objectCard = objectCard1.objectCard;
+                ObjectCard objectCard = objectCardHolder.objectCard;
+                //Activates special actions for certain ObjectCards
                 foreach (ObjectCardAction objectCardAction in cardAction) if (objectCardAction.card == objectCard) objectCardAction.onEnter.Invoke();
                 objectCards.Add(objectCard);
                 PushCardToPuzzleOneObject(objectCard);
@@ -64,52 +64,55 @@ public class ReadObjectCard : MonoBehaviour
         if (collider.gameObject.GetComponent<ObjectCardHolder>() && collider.gameObject.GetComponent<ObjectCardHolder>().objectCard != null)
         {
             gameObjects.Remove(collider.gameObject);
-            foreach (ObjectCardHolder objectCard1 in collider.gameObject.GetComponents<ObjectCardHolder>())
+            //Checks for different cards being held. And removes them from the stored list of cards in trigger.
+            foreach (ObjectCardHolder objectCardHolder in collider.gameObject.GetComponents<ObjectCardHolder>())
             {
-                ObjectCard objectCard = collider.gameObject.GetComponent<ObjectCardHolder>().objectCard;
+                ObjectCard objectCard = objectCardHolder.objectCard;
                 foreach (ObjectCardAction objectCardAction in cardAction) if (objectCardAction.card == objectCard) objectCardAction.onLeave.Invoke();
                 objectCards.Remove(objectCard);
                 if (combinationComponent == CombinationComponent.read) PushCombination();
-                if (combinationComponent == CombinationComponent.write) PushCardAndObject(null, null);
+                if (combinationComponent == CombinationComponent.write) PushCardAndObject(objectCards.Count == 1 ? objectCards[0] : null, gameObjects.Count == 1 ? gameObjects[0] : null);
             }
         }
     }
 
-    public void PushCombination()
+    public bool PushCombination()
     {
-        if (combinationObject == null) return;
-
+        if (combinationObject == null) return false;
         CombinationCheck();
         combinationObject.CatchPossibleCombinations(gameObjects.ToArray(), combination);
+        return true;
     }
 
-    public void PushToCrate(ObjectCard card, GameObject gameobject)
+    public bool PushToCrate(ObjectCard card, GameObject gameobject)
     {
-        if (crateObject == null) return;
+        if (crateObject == null) return false;
         crateObject.ReceiveCard(card , gameobject);
+        return true;
     }
 
-    public void PushCardAndObject(ObjectCard card, GameObject gameObject)
+    public bool PushCardAndObject(ObjectCard card, GameObject gameObject)
     {
-        if (combinationObject == null) return;
+        if (combinationObject == null) return false;
         combinationObject.CatchEmptyComponent(gameObject, card);
+        return true;
     }
 
-    public void PushCardToPuzzleOneObject(ObjectCard card)
+    public bool PushCardToPuzzleOneObject(ObjectCard card)
     {
-        if (puzzleOneObject == null) return;
+        if (puzzleOneObject == null) return false;
         puzzleOneObject.PictureGiven(card);
+        return true;
     }
 
     private bool CombinationCheck()
     {
         combination = null;
-        List<ObjectCard> remainingCards = new List<ObjectCard>();
         foreach (Combinations combinations in possibleCombinations)
         {
             if (combinations.combinesWith.Length == objectCards.Count)
             {
-                remainingCards.Clear();
+                List<ObjectCard> remainingCards = new List<ObjectCard>();
                 remainingCards.AddRange(combinations.combinesWith);
                 foreach (ObjectCard objectCard in objectCards)
                 {
@@ -131,12 +134,4 @@ public class ReadObjectCard : MonoBehaviour
         objectCards.Clear();
         gameObjects.Clear();
     }
-}
-
-[System.Serializable]
-public class ObjectCardAction
-{
-    [SerializeField] public ObjectCard card;
-    [SerializeField] public UnityEvent onEnter;
-    [SerializeField] public UnityEvent onLeave;
 }

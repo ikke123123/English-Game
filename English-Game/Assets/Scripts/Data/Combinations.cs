@@ -4,7 +4,7 @@
 public class Combinations : ScriptableObject
 {
     //------------------------------------------
-    //             Made By Thomas
+    //Stores combinations of ObjectCards.
     //------------------------------------------
 
     [SerializeField] public ObjectCard[] combinesWith;

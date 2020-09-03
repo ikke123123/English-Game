@@ -14,7 +14,6 @@ public class BreakScript : MonoBehaviour
     [SerializeField] private GameObject replacementObject;
     [SerializeField] private Soundcard emptyGlassBreak;
     [SerializeField] private Soundcard fullGlassBreak;
-    [SerializeField] private Soundcard specialBreakSoundcard;
     [SerializeField] private GameObject simpleSoundCardPlayer;
     [HideInInspector] private bool hasBroken = false;
 
@@ -31,10 +30,6 @@ public class BreakScript : MonoBehaviour
                 audioObject.GetComponent<SimpleSoundCardPlayer>().StartPlaying(fullGlassBreak);
             }
             else audioObject.GetComponent<SimpleSoundCardPlayer>().StartPlaying(emptyGlassBreak);
-            if (specialBreak != null)
-            {
-                specialBreak.StartPlaying(specialBreakSoundcard, true);
-            }
             CodeLibrary.ReplaceObject(gameObject, replacementObject);
         }
     }

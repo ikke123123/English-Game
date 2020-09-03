@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum PictureTag { untagged, beach, field, forrest, bird, cat, pug, lying, sitting, standing };
-
 [CreateAssetMenu(fileName = "New Object Card", menuName = "Custom/Object Card")]
 public class ObjectCard : ScriptableObject
 {
-    //------------------------------------------
-    //             Made By Thomas
-    //------------------------------------------
-    //This script contains data about objects t-
-    //hat are assigned to it.
+    //---------------------------------------
+    //This script contains data about objects 
+    //that are assigned to it.
+    //---------------------------------------
 
-    [SerializeField] public GameObject prefab;
+    public GameObject prefab;
     [Header("First Puzzle")]
-    [SerializeField, Tooltip("Can be left empty, is only used for first puzzle. Pick: Blue, Gray, or Green.")] public PictureTag location;
-    [SerializeField, Tooltip("Can be left empty, is only used for first puzzle. Pick: Standard, Lighter, or Darker.")] public PictureTag attribute;
-    [SerializeField, Tooltip("Can be left empty, is only used for first puzzle. Pick: Normal, Metallic, or Transparent.")] public PictureTag activity;
+    [Tooltip("Can be left empty, is only used for first puzzle. Pick: Blue, Gray, or Green.")] public PictureTag location;
+    [Tooltip("Can be left empty, is only used for first puzzle. Pick: Standard, Lighter, or Darker.")] public PictureTag attribute;
+    [Tooltip("Can be left empty, is only used for first puzzle. Pick: Normal, Metallic, or Transparent.")] public PictureTag activity;
     [HideInInspector] public List<GameObject> assignedGameObject;
 
     private void OnEnable()

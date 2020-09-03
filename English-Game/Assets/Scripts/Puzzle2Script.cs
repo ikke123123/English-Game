@@ -5,83 +5,62 @@ using UnityEngine;
 public class Puzzle2Script : MonoBehaviour
 {
     //------------------------------------------
-    //             Made By Thomas
-    //------------------------------------------
     //Actually performs the combination of the
     //objects.
     //------------------------------------------
-    //Last Modification Time: 12:44 08/01/2020
 
     [Header("Settings")]
     [SerializeField, Tooltip("The empty component that's required for the combination, for instance the empty bottle.")] private ObjectCard emptyComponent;
     [SerializeField, Tooltip("The resulting component, for instance the full bottle.")] private ObjectCard fullComponent;
     [SerializeField, Tooltip("If the game doesn't receive a correct combination object, it will create this instead.")] private Combinations alternativeComponent;
-    [SerializeField] private Combinations specialCombination;
-    [SerializeField] private SoundcardPlayer soundcardPlayer;
-    [SerializeField] private ReadObjectCard[] clearOnCombine;
+    [SerializeField, Tooltip("A potion that can be unlocked through the specialCombinationEnabled bool.")] private Combinations specialCombination;
+    //ReadObjectCard scripts maintain a list of Objects with the ObjectCard script attached within their trigger collider.
+    [SerializeField, Tooltip("The ReadObjectCards whose trigger collider will be emptied upon combination.")] private ReadObjectCard[] clearOnCombine;
 
-    [Header("Don't Touch")]
+    [Header("Constant")]
+    //One time disposable sound player.
     [SerializeField] private GameObject simpleSoundCardPlayer;
     [SerializeField] private Soundcard playOnCombine;
 
     [Header("Debug")]
-    [SerializeField] public bool specialCombinationEnabled = false;
+    public bool specialCombinationEnabled = false;
     [SerializeField] private bool canCombine = false;
     [SerializeField] private Combinations possibleCombination;
     [SerializeField] private GameObject[] gameObjectsInCombination;
+    //The bottle that is to be replaced.
     [SerializeField] private GameObject emptyComponentGameObject;
     [SerializeField] private ObjectCard receivedComponent;
 
     private void Awake()
     {
+        //Error checks.
         if (emptyComponent == null) Debug.LogError("No empty component was assigned.");
         if (fullComponent == null) Debug.LogError("No full component was assigned.");
         if (alternativeComponent == null) Debug.LogError("Alternative component wasn't assigned.");
     }
 
-    //Receives From Read
+    //Receives the gameObjects present in the ingredient side of combination device, in combination with the possible combinations that are stored in the ReadObjectCard script.
     public bool CatchPossibleCombinations(GameObject[] gameObjects, Combinations combination)
     {
-        Debug.Log("Read");
-        Debug.Log(combination);
-        //if (gameObjectInCombination == gameObjects) gameObjectInCombination = null;
-        //else
         gameObjectsInCombination = gameObjects;
-        //if (possibleCombination == combination) possibleCombination = null;
-        //else
         possibleCombination = combination;
         canCombine = CheckIfCanCombine();
-        Debug.Log(canCombine);
         return canCombine;
     }
 
-    //Receives from Write
+    //Receives the gameObject present and the objectCard of that object bottle side of combination device
     public bool CatchEmptyComponent(GameObject gameObject, ObjectCard objectCard)
     {
-        Debug.Log("Write");
-        //if (emptyComponentGameObject == gameObject) emptyComponentGameObject = null;
-        //else
         emptyComponentGameObject = gameObject;
-        //if (receivedComponent == objectCard) receivedComponent = null;
-        //else
         receivedComponent = objectCard;
         canCombine = CheckIfCanCombine();
-        Debug.Log(canCombine);
         return canCombine;
     }
 
+    //Combine is activated through a button using Unity's Event System.
     public void Combine()
     {
-        Debug.Log("Combine void ran");
-        if (canCombine)
-        {
-            ApplyCombine(/*possibleCombination*/);
-            return;
-        }
-        if (gameObjectsInCombination != null && gameObjectsInCombination.Length > 0 && emptyComponentGameObject != null && receivedComponent != null && receivedComponent == emptyComponent)
-        {
-            ApplyCombine(/*alternativeComponent*/);
-        }
+        if (canCombine) ApplyCombine();
     }
 
     public void EnableSpecialComponent(bool enabled)
@@ -89,19 +68,20 @@ public class Puzzle2Script : MonoBehaviour
         specialCombinationEnabled = enabled;
     }
 
+    //Executes the necessary checks and starts process of combining.
     private void ApplyCombine()
     {
+        //Creates Sound Object and starts playing the sound.
         GameObject audioObject = Instantiate(simpleSoundCardPlayer, transform.position, transform.rotation);
         audioObject.GetComponent<SimpleSoundCardPlayer>().StartPlaying(playOnCombine);
-        if (possibleCombination == null || (possibleCombination == specialCombination && specialCombinationEnabled == false)) possibleCombination = alternativeComponent;
-        Debug.Log("Combine apply ran");
+        if (possibleCombination == null) possibleCombination = alternativeComponent;
         foreach (GameObject gameObject in gameObjectsInCombination) Destroy(gameObject);
+        //Makes bottle ungrabbable
         emptyComponentGameObject.layer = 16;
         Invoke("SpawnNewBottle", 3);
         gameObjectsInCombination = null;
         foreach (ReadObjectCard readObjectCard in clearOnCombine) readObjectCard.ClearOnCombine();
-        CatchPossibleCombinations(gameObjectsInCombination, possibleCombination);
-        CatchEmptyComponent(emptyComponentGameObject, receivedComponent);
+        canCombine = false;
     }
 
     private void SpawnNewBottle()
@@ -109,32 +89,18 @@ public class Puzzle2Script : MonoBehaviour
         GameObject newObject = Instantiate(fullComponent.prefab, emptyComponentGameObject.transform.position, emptyComponentGameObject.transform.rotation);
         if (newObject.GetComponent<ObjectCardHolder>() == false) newObject.AddComponent<ObjectCardHolder>();
         newObject.GetComponent<ObjectCardHolder>().objectCard = possibleCombination.result;
-        if (possibleCombination == specialCombination) newObject.GetComponent<BreakScript>().specialBreak = soundcardPlayer;
+        //Sets color of liquid to the color of the prefab cube.
         newObject.GetComponent<ColorChanger>().ChangeColor(possibleCombination.result.prefab.GetComponent<MeshRenderer>().sharedMaterial.GetColor("_Color"));
+        //Destroy the empty bottle.
         Destroy(emptyComponentGameObject);
         possibleCombination = null;
     }
 
     private bool CheckIfCanCombine()
     {
-        Debug.Log("Can Combine?");
-        Debug.Log(possibleCombination);
-        if (possibleCombination != null && gameObjectsInCombination != null)
+        if (gameObjectsInCombination.Length > 0 && receivedComponent == emptyComponent && receivedComponent.assignedGameObject.Contains(emptyComponentGameObject) && emptyComponentGameObject != null)
         {
-            Debug.Log("0");
-            if (gameObjectsInCombination.Length > 0)
-            {
-                Debug.Log("1");
-                if (receivedComponent == emptyComponent)
-                {
-                    Debug.Log("2");
-                    if (receivedComponent.assignedGameObject.Contains(emptyComponentGameObject))
-                    {
-                        Debug.Log("3");
-                        return true;
-                    }
-                }
-            }
+            return true;
         }
         return false;
     }
